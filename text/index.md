@@ -1,6 +1,10 @@
 # Python for Humanists
 
-For the exercises, starter-code is available. Please feel free to [clone it here](https://github.com/dlondonmedina/FlaskTDD-sc.git).
+Digital Humanists are individuals with technical skills and critical awareness. By combining the critical thinking and social consciousness rooted in social theory and humanist thougth with the technical know-how rooted in computer science and software development, digital humanists can help make our technologically saturated society more just, humane, and good. 
+
+This text is designed to help digital humanists learn the Python programming language from a humanist perspective. Along with learning the syntax and design patterns, readers will be encouraged to consider what the software they develop does to the human society that it serves. This is very much a survey text, and I would strongly encourage readers to also visit [Python for Everybody](https://www.py4e.com/)
+
+For the exercises in this text, starter-code is available. Please feel free to [clone it here](https://github.com/dlondonmedina/p4h_code.git).
 
 ## About the Author
 
