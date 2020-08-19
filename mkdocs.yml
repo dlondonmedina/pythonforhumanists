@@ -1,0 +1,5 @@
+site_name: Python 1 for Humanists
+docs_dir: 'text'
+site_dir: 'docs'
+nav: 
+  - Home: index.md
