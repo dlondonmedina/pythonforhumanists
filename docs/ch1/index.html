@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Computers and You - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../ch2/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#computers-and-you" class="nav-link">Computers and You</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#computer-architecture" class="nav-link">Computer Architecture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#beyond-the-graphical-user-interface" class="nav-link">Beyond the Graphical User Interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#installing-bash" class="nav-link">Installing Bash</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#a-taste-of-bash" class="nav-link">A taste of Bash</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setup-our-environment" class="nav-link">Setup our Environment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="computers-and-you">Computers and You</h1>
+<p>Welcome to Python for Humanists. This first chapter will introduce you to basic architecture of computers and the basics of setting up your development environment. By the end of this chapter, you'll have exercises that will ask you to walk through getting your development environment set up and ready to go. </p>
+<h2 id="computer-architecture">Computer Architecture</h2>
+<p><img alt="Computer Architecture Diagram" src="../img/computer-architecture.png" />
+If you were to open up your computer, and I do recommend that you do so someday, you'll see a bunch of silicone chips and wires and tower looking things. Whenever we use our computer, regardless of how fancy and complex the output on our screen might be or the calculations that the machine can accomplish, all that is happening inside the computer is a bunch of electricity flowing across the metal in particular patterns that are meaningful and useful. The various components work together to create patterns that achieve whatever commands we or some developer have provided to the machine. </p>
+<p>To understand how Python is working and to understand Concepts in Computing, it is useful to know the anatomy of a computer. There are very many types of computers from the system in your car to your smartphone to your desktop to your digital watch. In a nutshell, computers are machines that take some sort of input, do some calculations on those input, and finally return some sort of output. A simple calculator, for instance, takes numbers and operators as inputs, processes those inputs by performing the input operators, and finally returns the result of that operation as an output. More complicated computers, like a smartphone, just take different types of inputs and perform more complicated processes.</p>
+<p>Since all computers fundamentally do the same thing in varying degrees of complexities, they all have a basic set of components:</p>
+<ul>
+<li>
+<p>Input and Output devices</p>
+</li>
+<li>
+<p>Processing Device</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+<li>
+<p>(Optional) Storage</p>
+</li>
+</ul>
+<p>Let's start with the Input and Output (I/O) devices. I/O devices are the features that allow the computer to interact with the world. Input devices include keyboards, mice, touch screens, and so on. Each input device takes a specific type of data. Output devices include printers, monitors, speakers, and so on. Each output device returns a specific type of data. Computers might have various I/O devices, sometimes built in, sometimes peripheral, but they all will have some sort of I/O otherwise they won't be able to take data and return results.</p>
+<p>Memory is the next step. Memory is the space where data is stored when it is not immediately being processed. For instance, when you work in a Word document, your document is read from the long term storage to the memory. As you make changes, those changes are written to the memory, and when you "Save" the version of the document is written back to the long term storage medium. Memory is volatile, which means that when the computer shuts down or loses power, the memory is erased. The solution to this is long term storage, which will be covered below. If you've ever had the experience of working on a file and losing unsaved changes, it happened because those changes had not yet been written to long term storage.</p>
+<p>Processing devices are the processor. Processors come in various flavors and functionality, but they are responsible for managing all of the components of the computer (the memory and the I/O devices), and for running calculations. Every operation in a computer is the result of calculations done in binary. The processor is doing that constantly, often several calculations at once if you have a processor capable of multi-threading. </p>
+<p>(Optional) Most computers also have some form of long term storage. This might be a hard disk drive, a solid state drive, or a memory card. These are physical media of various sorts that can have data written to them in a permanent or semi-permanent state. In the case of hard disk drives, data is stored as charges written to magnetic platters.</p>
+<p>On larger computers like laptops and desktops, these components are usually connected through a motherboard that helps orchestrate the processes.</p>
+<p>When we begin programming, it is useful to consider what part of the physical machine is performing a particular thing because it perhaps will help you visualize and make sense of what's going on. This is especially true when we get to variables and files. Interacting with variables means we are interacting with memory and interacting with files we are interacting usually with long term storage. </p>
+<h2 id="beyond-the-graphical-user-interface">Beyond the Graphical User Interface</h2>
+<p>Most of the time when you interact with a computer, you probably are doing so through what is called a Graphical User Interface (GUI). When you open your web browser, for instance, you have a window with URL bar and menus and a main pane where the website code is rendered for your enjoyment. Likewise, when you search for files, you are probably using File Explorer or Finder, both of which are GUIs for interacting with the file system. GUIs allow you to use your mouse and keyboard to interact with the computer through visual icons and fields. I cannot overstate the importance of GUIs to the proliferation of computers. Without a GUI, you would either have to use a command line interface or punch cards to use a computer. GUI's allow non-experts to gain access without facing the steep learning curve of learning commands or code or punch card patterns. Instead, you can issue commands to the computer through an intuitive interface of icons, labelled fields, and so on. </p>
+<p>That being said, GUIs limit the efficiency at which you can work and frequently limit your ability to issue commands to the computer. This means that if you want to move from being a user towards being a maker or developer (one who uses the computer as is, to one who might explore what the computer can be made to do) is to become familiar with what is called a Command Line Interface (CLI). There are numerous CLIs ranging from DOS Prompt, Windows Command LIne, Powershell, Bash, etc. Even Python has a CLI, which allows you to issue Python commands directly to the Python interpreter (this will make more sense next chapter). CLIs allow the user to issue text based commands to the system (whichever system reads and interprets the commands). So, just as I could use a GUI to view, create, open, move, and delete files and folders in the above example by clicking on buttons and icons in the GUI to issue commands to the Operating System, so too can I use the CLI to view, create, open, move, and delete files and folders by entering commands as text via the keyboard into the CLI.</p>
+<p>The particular CLI we will be using in this class is <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">BASH</a>. We are learning Bash instead of Command Prompt or Powershell because it is a very powerful "shell" that is built into all unix operating systems (Mac and Linux); however, at the time of writing, Mac is beginning to use Zsh instead, but the commands are largely the same so no worries. It is the standard CLI that you will encounter on nearly all web servers and will give you the most bang for your buck. Plus, it can be installed on Windows, and many bash commands are the saem in Powershell. </p>
+<p>Learning a CLI involves learning a set of commands (or "magic words") that are available. You won't need to memorize them all, but by spending time using the CLI, you will gradually pick them up. Why would we take the time to learn a CLI when you're already proficient at using a GUI? Great question!</p>
+<p>GUIs are limited to the set of actions that the GUI designer thinks that most users will need. The actions are usually triggered by a mouse click, but advanced users will likely learn Hotkeys or keyboard shortcuts to make their work faster. However, the program often has a number of other commands or actions that are difficult to access via the GUI. Using a CLI often gives you more power and control over what the program is doing. </p>
+<p>GUIs involve using a mouse or tabbing through buttons with the keyboard. This means that they are much slower to do complicated tasks. Once you become familiar with a CLI, you will be much faster at doing the same kinds of tasks, and many tasks are less complicated using a CLI than they are using a graphical interface.</p>
+<p>Let's say you decide to set up an application on a web server. First, that server exists in some server farm somewhere and the company that provides it allows you to access it remotely over a secure connection. That web server probably will not have a Desktop environment (a GUI for an operating system). Instead, it will have a CLI environment, and you will access it through a secure shell (ssh). Let's ignore the fact that the server will require that you use the CLI and think about how we might connect to that server remotely. To connect to that server, you set up an ssh connection. There are GUI programs that allow you to do this, like Putty, for instance. To do this, you must first install the program, then set up a connection through the form that the GUI provides and finally click the connect button. In Bash, however, all you have to do is type <code>ssh username@server.com</code> with any additional settings that might be necessary (e.g. you might need to type <code>ssh -p 5257 username@server.com</code> if you want to specify a particular port to connect to) and then hit enter. Likewise, many coding related applications have poor GUIs. Python's package manager (pip) for example only works in CLI. </p>
+<p><strong>One word of caution:</strong>  CLIs give you greater power and control over the machine, but that means you can mess things up pretty severely. I recommend knowing what a command will do before you execute it. This is particularly important if you are reading advice from StackOverflow or some other online forum that answers questions. Likewise, if you are not already practicing good backup habits, not would be an ideal time to start because it is possible to break things or lose data (e.g. <code>rm -rf /home/</code> would delete all files installed by users without asking if you're sure).</p>
+<h2 id="installing-bash">Installing Bash</h2>
+<p>So if you're a Mac or Linux User, you can skip this section. You already have Bash or Zsh installed on your computer. In Mac, you'll need to locate the application called Terminal. In Linux, usually the hotkeys to open a terminal is CTRL+ALT+T. </p>
+<p>If you're a Windows 10 user, you have two options. You can set up Windows Subsystem Linux. Since developers frequently prefer developing in a Unix environment like Mac or Linux (for many reasons which I won't go into here), Windows has built a subsystem that allows you to use Linux within your Windows operating system. I use this personally when I'm using my Windows computer, but it is a little bit fiddly and permissions can be weird. The option I will walk you through here is using Git Bash. Git is a version control program that we'll talk about in a little bit, but they have created a version of Bash that works on Windows. It's lovely. </p>
+<ol>
+<li>
+<p>head over to Git's <a href="https://git-scm.com/downloads">download page</a> and select the appropriate version of Git Bash to download.</p>
+</li>
+<li>
+<p>Run the installer that you just downloaded. I use the default settings, but if you want to customize the installation, feel free.</p>
+</li>
+<li>
+<p>Open Git Bash and a terminal will open up. Hooray.</p>
+</li>
+</ol>
+<h2 id="a-taste-of-bash">A taste of Bash</h2>
+<p>If you want a great tutorial on how to use Bash and even write scripts in the Bash scripting language, check out <a href="https://guide.bash.academy/">Bash Academy</a> for a really detailed tutorial of Bash. I strongly recommend this because knowing your way around a CLI will make the work of this program much easier. I will give you a quick overview here of Bash. I'd encourage you to follow along on your computer. </p>
+<p>When you open a Bash terminal, you will see a window with a black background and some text. Mine lookes like this:</p>
+<p><code>user1@DESKTOP-61VJ97U:~$ _</code> </p>
+<p>This is the prompt, and you'll see a cursor blinking right after the dollar sign. You can type commands here. Throughout this program, I will share code snippets and when I do, I will simply start with either <code>~$</code> or <code>(env) ~$</code> So if you are following along and it looks slightly different, just know I'm cutting out the username and host for brevity sake.</p>
+<p>The first thing to learn about the CLI is how to navigate. Wherever the prompt is "located" in your file tree is where you will execute your commands. For example, if I am in a directory called "projects" and my prompt is set in that directory, then when I create a file it will be created within that directory. The first command we need to learn is <strong>pwd</strong> which stands for "print working directory." The working directory is where my terminal is currently working. For example, when I open a terminal, it automatically opens to the home directory, represented by the tilda (~). So when I issue the command:</p>
+<pre><code>~$ pwd
+/home/user1
+</code></pre>
+
+<p>This means that my current working directory is <code>/home/user1</code> and any command I issue, unless I specify otherwise, will be executed in that directory. </p>
+<p>Next, I will use the <strong>ls</strong> command to show you what directories reside within my home directory:</p>
+<pre><code>~$ ls
+Books  Projects  dylanmedina  experiments
+</code></pre>
+
+<p>Within my home directory I have Books, Projects, dylanmedina, and experiments. These are all directories that I can navigate into. These first two commands are crucial because they give me the location and context in which my CLI is operating. Now, let's say we're starting a new project, like this lesson. I might make a new directory for that project. To do so, I need to create a new directory and give it a name. The command is <strong>mkdir</strong> for "make directory." You follow that by the name of the directory. One word on names: spaces don't work because each word of a command is separated by a space. So if I wanted to create a directory called Python for Humanists, and I issued the command <code>~$ mkdir Python for Humanists</code> it would create three directories. One workaround is surround the name with quotation marks, but it's easier to just use names that don't have spaces. So let's go:</p>
+<pre><code>~$ mkdir pythonHumanist
+~$ ls
+Books  Projects  dylanmedina  experiments  pythonHumanist
+</code></pre>
+
+<p>You'll see, I created a directory called pythonHumanist and then I listed out the contents of my home directory, and you can see that my command worked. Now let's say we want to create our first Python script inside of the pythonHumanist directory. First, we can move into that directory and then we can create the file. To change directories we type <strong>cd</strong> followed by the absolute or relative path of the directory we want to visit. </p>
+<pre><code>~$ cd pythonHumanist
+~/pythonHumanist$
+</code></pre>
+
+<p>You'll notice that the tilda is now followed by the directory name in my prompt showing me conveniently where I am (my working directory). Next, we create a file in that directory called hello.py and add some text to that file. We can do this in one step, but I'm doing two so you can see two different commands:</p>
+<pre><code>~/pythonHumanist$ touch hello.py
+~/pythonHumanist$ ls
+hello.py
+~/pythonHumanist$ echo &quot;print('Hello World')&quot; &gt;&gt; hello.py
+</code></pre>
+
+<p>A few notes. First, we used the <strong>touch</strong> command to create a file. The general syntax is <code>touch {filename}</code> where {filename} is replaced by the name of the file you want to create. If you want to create multiple files, you can list them with a space separating each file name. Again, the same "no spaces" rule applies. Second, I listed out the contents of the directory to show that the file was created. If you opened the file at this point, it will be empty. Finally, I used the <strong>echo</strong> command followed by two <code>&gt;&gt;</code> greater than signs. The echo command prints some text. The greater than symbols writes the output of the echo command to the file. If I use 2 greater than signs, the output is appended to the end of the file. If I use one greater than sign, the file is overwritten with the new content. After this command, you'll see that the file hello.py contains the text <code>print('Hello World')</code>, which is Python code. More on that later. You can send the output of commands to other commands in Bash, and that ends up being a powerful feature. </p>
+<p>Next, let's say I want to copy files. This is really easy in Bash. The command is <strong>cp</strong> for copy and the syntax is <code>cp {source} {destination}</code></p>
+<pre><code>~/pythonHumanist$ cp hello.py hello2.py
+~/pythonHumanist$ ls
+hello.py  hello2.py
+</code></pre>
+
+<p>If you want to copy directories, you do so with the <code>-r</code> flag. Many commands have flags. These flags change the behavior of the command. In this case, I mean "copy recursively" or go through the contained directories and files and copy those as well as the outer directory that I named. </p>
+<p>The final command I want to cover here is <strong>rm</strong> which deletes files. <strong>BE CAREFUL WITH THIS COMMAND BECAUSE THERE WILL NOT BE A PROMPT ASKING IF YOU'RE SURE YOU WANT TO DELETE A FILE</strong></p>
+<pre><code>~/pythonHumanist$ rm hello.py
+~/pythonHumanist$ cd ..
+~$ rm -r pythonHumanist
+</code></pre>
+
+<p>First, I remove the file hello.py using the <strong>rm</strong> command. Then I change directories up one level (<code>..</code> signifies up one level) so I change the working directory to home. Then I remove the pythonHumanist directory using the <code>-r</code> flag. Again, many commands in Bash have flags that you can add that change the behavior. <code>-r</code> means recursive and it is what we use to remove directories. It means go into the directory, recursively delete all the files and then remove the directory. So if I had wanted to, I could have skipped removing the hello.py file first and just removed the directory and the file would have been deleted, too. </p>
+<p>There are many other commands that you will want to use, but I just wanted to give you a brief overview. We will encounter others that you'll have to learn as you go. If you have the time and energy, I strongly suggest spending a few hours and going further into Bash, as some of the concepts will make learning Python a bit easier. </p>
+<h2 id="setup-our-environment">Setup our Environment</h2>
+<p>We've done a bit of set up already and introduced you to the CLI. Now we need to finish getting things set up so that we can dive into Python next chapter. There are a few things we'll need. First, we need to get a good text editor. Python, as all code, is a bunch of human readable text that some program on the computer can understand and translate into the appropriate machine language that the computer can understand. There are tons of text editors out there and technically we could use Notepad for our code, but we want to use something with a few more features. <strong>KEY:</strong> do not use a word processor like Word to write code. When you use a word processor it adds extra markup to your file to display the formatting of the text and this will make your code non-functional. We will be using Visual Studio Code, but Atom is another good free option. I like Visual Studio Code because it gives you a file explorer and a terminal all built into one. </p>
+<ol>
+<li>
+<p>Head over to the Visual Studio Code <a href="https://code.visualstudio.com/">download page</a></p>
+</li>
+<li>
+<p>Download the installer for your operating system and run the installer.</p>
+</li>
+<li>
+<p>Check the installation by opening Git Bash (or Bash if you're in Mac) and typing <code>code --version</code></p>
+</li>
+<li>
+<p>Set up User Settings in Visual Studio Code</p>
+</li>
+</ol>
+<p>VS Code allows you to customize settings for all projects (User Settings) or for a single project (Workspace settings). To modify default settings select Code | Preferences for the Mac or File | Preferences for Windows and then Settings. You will see 2 files side by side. On the left are the default settings and on the right are the User setting overrides.</p>
+<p>To change a default setting find the setting on the left and then copy it to the right with your desired setting. For example, if you don't want to see the minimap on the right hand side of the application, you can make the following entry in the file on the right. Notice that options are key : value pairs and that they are commas separated.</p>
+<pre><code>{
+
+&quot;editor.minimap.enabled&quot;:false
+
+}
+</code></pre>
+
+<p>Make "Git Bash" the default command line in VS Code terminal by adding the following to your User Settings:</p>
+<pre><code>&quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;
+</code></pre>
+
+<h3 id="install-python">Install Python</h3>
+<p>You'll also need to install Python. Python has a number of versions, and Python 3 is the one we will be using. If you are on Windows, you don't have Python. If you're on Mac or Linux, you have Python 2 so you need to add Python 3. </p>
+<h4 id="installing-python-on-windows">Installing Python on Windows</h4>
+<ol>
+<li>
+<p>Head to the Python <a href="https://www.python.org/downloads/">downloads page</a> and select the Python 3 installer.</p>
+</li>
+<li>
+<p>Run the installer, and allow it to add Python3 to the Path. This is important, so make sure you pay attention to the option for adding Python3 to your PATH. </p>
+</li>
+<li>
+<p>Once you've installed Python3, open Git Bash and type <code>python --version</code> and you should get a version number back. If not, or if you get an error, try to close Bash and open it again. If that doesn't work, try installing again. If it still doesn't work, probably Python was not added to the PATH. You can Google adding Python to the PATH in Windows.</p>
+</li>
+</ol>
+<h4 id="installing-python-3-on-mac">Installing Python 3 on Mac</h4>
+<p>Macs come with Python2 installed, so you will need to install Python3. Note, <strong>DO NOT UNINSTALL OR OTHERWISE REMOVE PYTHON 2</strong>. It will break your operating system.</p>
+<ol>
+<li>
+<p>Head to the Python <a href="https://www.python.org/downloads/">downloads page</a> and select the Python 3 installer.</p>
+</li>
+<li>
+<p>Run the installer. (Don't worry about the PATH, as that's not an issue we deal with in UNIX in the same way.)</p>
+</li>
+<li>
+<p>Once you've installed Python3, open Git Bash and type <code>python3 --version</code> and you should get a version number back. If not, or if you get an error, try to close Bash and open it again. If that doesn't work, try installing again. Also, if you type <code>python --version</code> it will say python 2.7 or something like that. By default on Mac and Linux, Python 2 is installed so the <code>python</code> command will use Python 2. We need to use <code>python3</code> instead until we setup virtual environments.</p>
+</li>
+</ol>
+<h3 id="set-up-github">Set up Github</h3>
+<p>Github is awesome! It is a place where you can share code and manage version control. Please do not get confused between Github and Git. Git is a CLI program that manages version control. Every time you "commit" changes with git, you create a new version. Behind the scenes, git manages a set of diff files that keep track of the changes that were made to the repository (or collection of code) since the last commit.</p>
+<p>Github is an online storage service that integrates with git and allows you to push your code to this service and share it both with teams and publicly.</p>
+<p>I'm not going to go over the Git commands here, but here is a <a href="https://learngitbranching.js.org/">good tutorial</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

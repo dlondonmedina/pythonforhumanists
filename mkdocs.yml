@@ -1,5 +1,9 @@
-site_name: Python 1 for Humanists
+site_name: Python for Humanists
 docs_dir: 'text'
 site_dir: 'docs'
 nav: 
   - Home: index.md
+  - Set-Up:
+    - Computers and You: ch1.md
+    - A Taste of Python: ch2.md
+    - Encoding Identity: ch3.md
