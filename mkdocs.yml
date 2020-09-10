@@ -6,4 +6,5 @@ nav:
   - Set-Up:
     - Computers and You: ch1.md
     - A Taste of Python: ch2.md
+  - Basic Syntax:
     - Encoding Identity: ch3.md
