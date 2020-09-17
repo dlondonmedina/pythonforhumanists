@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Ch4 - Python for Humanists</title>
+        <title>Anatomy of a Script - Python for Humanists</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -49,12 +49,16 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
     <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Anatomy of a Script</a>
 </li>
                                 </ul>
                             </li>
@@ -66,6 +70,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch3/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -83,12 +97,154 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#really-getting-into-python-now" class="nav-link">Really getting into Python Now</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#start-in-the-interpreter" class="nav-link">Start in the interpreter</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-anatomy-of-a-python-script" class="nav-link">The Anatomy of a Python Script</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="really-getting-into-python-now">Really getting into Python Now</h1>
+<h2 id="start-in-the-interpreter">Start in the interpreter</h2>
+<p>I like to start playing with Python in the interpreter. This section will be pretty short, but I'll give you a bunch of lines in Python, which you should try for yourself. Then I'll translate those lines into plain English.</p>
+<pre><code class="python">&gt;&gt;&gt; print(&quot;Hello, Dylan&quot;)
+Hello, Dylan
+&gt;&gt;&gt; 2 * 2
+4
+&gt;&gt;&gt; 2 + 2 * 27
+56
+&gt;&gt;&gt; 2 - 2
+0
+&gt;&gt;&gt; 12 % 5
+2
+&gt;&gt;&gt; 12 % 2
+0
+&gt;&gt;&gt; 13 % 2
+1
+&gt;&gt;&gt; 12 % 2 == 0
+True
+&gt;&gt;&gt; x = 27
+&gt;&gt;&gt; x % 2 == 0
+False
+&gt;&gt;&gt; input(&quot;What is your name&quot;)
+What is your nameDylan
+'Dylan'
+&gt;&gt;&gt; n = input(&quot;What is your name? &quot;)
+What is your name? Dylan
+&gt;&gt;&gt; n
+'Dylan'
+&gt;&gt;&gt; print(&quot;Hello, &quot; + n)
+Hello, Dylan
+&gt;&gt;&gt; n == &quot;Dylan&quot;
+True
+</code></pre>
+
+<hr />
+<p>Me: <em>Please print "Hello, Dylan"</em></p>
+<p>Python Interpreter (PI): <em>Hello, Dylan</em></p>
+<p>Me: <em>Calculate the product of 2 and 2</em></p>
+<p>PI: <em>4</em></p>
+<p>Me: <em>Calculate the sum of 2 and 2 times 27 (</em><em>Note:</em><em> Order of operations is PEMDAS just like in math).</em></p>
+<p>PI: <em>56</em> (Not 108)</p>
+<p>Me: <em>Calculate 2 minus 2</em></p>
+<p>PI: <em>0</em></p>
+<p>Me: <em>Calculate the remainder of 12 divided by 5</em></p>
+<p>PI: <em>2</em></p>
+<p>Me: <em>Calculate the remainder of 12 divided by 2</em></p>
+<p>PI: <em>0</em></p>
+<p>Me: <em>Calculate the remainder of 13 divided by 2</em></p>
+<p>PI: <em>1</em> </p>
+<p>Me: <em>Evaluate if the remainder of 12 divided by 2 is 0</em></p>
+<p>PI: <em>True</em> (The remainder of 12 divided by 2 is 0)</p>
+<p>Me: <em>Create a variable called 'x' and assign the value 27 to it</em></p>
+<p>PI: <em>(Done)</em></p>
+<p>Me: <em>Evaluate if the remainder of the value stored in the variable x divided by 2 is 0</em> (<strong>Note:</strong> This is a really cool way to check if a number is even or not)</p>
+<p>PI: <em>False</em></p>
+<p>Me: <em>Prompt the user for some input with the prompt "What is your name"</em></p>
+<p>PI: <em>What is your name</em> (Waits for a response)</p>
+<p>Me: <em>Dylan</em></p>
+<p>PI: <em>Your input was Dylan</em></p>
+<p>Me: <em>Create a variable called 'n' and prompt the user for input with the prompt "What is your name? " and when they respond store that response to the variable n.</em></p>
+<p>PI: *What is your name? * (Waits for a response)</p>
+<p>Me: <em>Dylan</em></p>
+<p>PI: <em>(Stores 'Dylan' to the variable n)</em></p>
+<p>Me: <em>What's n?</em></p>
+<p>PI: <em>Dylan</em></p>
+<p>Me: <em>Print the string "Hello, " plus whatever value is stored in 'n'</em></p>
+<p>PI: <em>Hello, Dylan</em></p>
+<p>Me: *Evaluate if the value stored in 'n' is 'Dylan'</p>
+<p>PI: 'True'</p>
+<hr />
+<p>That's all pretty much straightforward. You'll notice I added some notes in the parentheses to explain what's going on. Of course, the Python CLI is cool, but once we exit out of it, all the work we did was lost unless we explicitly saved stuff to a file. Wouldn't it be nice if we could write a set of commands that could be run over and over again without having to type them in manually each time? Yes, indeed! That's where Python scripts come in to play. </p>
+<h2 id="the-anatomy-of-a-python-script">The Anatomy of a Python Script</h2>
+<p>While we can issue Python commands directly to the Python interpreter in the Python Terminal, we can also write Python to a file that the interpreter will execute. A few things to know:</p>
+<ul>
+<li>
+<p>Python files are text files with the file extension .py. A file extension is like .docx or .pdf. They tell the computer what type of file this is. </p>
+</li>
+<li>
+<p>Python files contain a sequence of instructions that are executed in the order they are written. </p>
+</li>
+<li>
+<p>When we execute a Python program, we call the file in Bash using the Python program. </p>
+</li>
+</ul>
+<p>Next, the general layout of a Python program is as follows:</p>
+<p><em>test.py</em></p>
+<pre><code class="python">#!/usr/bin/env python3
+
+# This is a comment. Any line beginning with a hashtag is 
+# ignored by the interpreter. 
+
+# At the top of our file we usually have import statements 
+# if any.
+import requests
+
+# Next we will have our instructions. In more complicated 
+# programs these will usually reside in Functions, or 
+# reusible bundles of code. I'll give you an example of 
+# that here.
+
+def website_checker(url):
+    r = requests.get(url)
+    if r.status_code == 200:
+        return True
+    return False
+
+# The instructions section is usually quite long.
+
+# Finally, we *might* have a driver section, or the section 
+# that calls the functions if there are functions. 
+
+if __name__ == &quot;__main__&quot;:
+    print(website_checker('https://www.google.com'))
+
+</code></pre>
+
+<p>In the above program, I have demonstrated the general format of a python script. The very first line is the shebang line. It is not required, but frequently is included in standalone scripts. It serves two purposes: </p>
+<ol>
+<li>
+<p>It allows you to run the script without invoking Python first. Instead of typing <code>$ python3 my_script.py</code> the shebang line allows you to simply type <code>$ ./my_script.py</code> to run the script. The Shebang line tells Bash which program to use to interpret the code. </p>
+</li>
+<li>
+<p>It tells someone who reads your code what interpreter this code was written for. </p>
+</li>
+</ol>
+<p>The shebang line is not usually included in multifile programs, and I usually only include it in small, utility scripts that I write. Also, if we use the virtual environment, we can run into trouble because if you look closely, the shebang line tries to use the most recent Python 3 executable in the global environment. Support for pointing to the executable in the virtual environment in the shebang line (<code>#!env/bin/ python3</code>) is not recommended practice. So likewise, if I'm writing a program that uses a virtual environment, I'll usually also leave off the shebang.</p>
+<p>Next, we import any libraries at the top. In this case, I've imported the library that allows me to request data from websites. <strong>Note:</strong> Sometimes we wait to import libraries until later. We'll discuss this later. The second section is where we have the instructions of our program. This is the code that tells the computer what we want it to do. Frequently the instruction section will contain functions, which we discuss in a couple chapters. Sometimes, the instructions are executed on the fly rather than stored in a function. Finally, the driver section exists if you need to call those functions. In larger programs, the driver section is frequently a separate file, and you might actually have a bunch of different files that are make up different parts of your program, but more on that later.</p>
+<p>For this chapter, we're going to start with a script that just contains the instructions section without any imports. For my example, I'm going to create a calculator that will allow the user to convert between Kilometers per hour (KPH) and Miles per hour (MPH). Now this is a real problem, perhaps for someone who is accustomed to driving in the USA and is moving to Canada or Europe. How fast is 100KPH really?</p>
+<p>Now I'm not going to build a complex user interface. Just a simple text interface for now. I need to prompt the user to tell me if they want to go from MPH to KPH or from KPH to MPH. Then I need to prompt the user to give me the speed they are going. Since I have two pieces of user input, I also need to have two variables to store that information. </p></div>
             </div>
         </div>
 
