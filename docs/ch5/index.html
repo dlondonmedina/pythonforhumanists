@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Conditions - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Conditions</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch4/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#conditionals" class="nav-link">Conditionals</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction-to-flow-control" class="nav-link">Introduction to Flow Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conditionals-an-example" class="nav-link">Conditionals: An example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="conditionals">Conditionals</h1>
+<h2 id="introduction-to-flow-control">Introduction to Flow Control</h2>
+<p>Thus far, we've basically told the computer what to do and it has done it basically as we requested. However, in programming, one of our goals is to turn over more of the work to computers. We saw this a little bit with our speed conversion program. Instead of writing two different programs, one for MPH to KPH and another for KPH to MPH, we wrote one program with a decision in it that allowed the computer to decide which calculation to perform based on the user's input. This ability of a computer to make decisions based on input is a central part of <strong>flow control</strong>. Flow control refers to the controls that we build into our program that tell the computer when and how many times to execute a particular group of instructions. There are two separate parts of flow control: conditionals, which tell the computer to execute instructions based on a set of conditions, and iterators or loops, which tell the computer to execute instructions while a particular condition is true or for a particular number of times. In this chapter, we'll look at the first. In the next chapter we'll look at the second. </p>
+<h2 id="conditionals-an-example">Conditionals: An example</h2>
+<p>To set the stage, let's say my user wants to figure out if one number is a factor of another number. A number is a factor if the second number can be divided evenly by the first. So, 4 is a factor of 12 because 12 can be evenly divided by 4. Programming languages give us the % (mod) operator to help us out with that. So let me write the program. It will prompt the user for two numbers. It will print "x is a factor of y" if the second number is a factor, and "Is not a factor" if not. </p>
+<pre><code class="python">mult = int(input(&quot;What is the multiple? &quot;))
+fact = int(input(&quot;What is the factor to check? &quot;)) 
+
+if mult % fact == 0:
+   print(&quot;{} is a factor of {}&quot;.format(fact, mult))
+else:
+   print(&quot;{} is NOT a factor of {}&quot;.format(fact, mult))
+</code></pre>
+
+<p>When we run this program from our bash terminal we get something like this: </p>
+<pre><code>~$ python factor.py
+What is the multiple? 12
+What is the factor to check? 4
+4 is a factor of 12
+~$
+</code></pre>
+
+<p>Then we can run it again with something we know should be false:</p>
+<pre><code>~$ python factor.py
+What is the multiple? 12
+What is the factor to check? 5
+5 is NOT a factor of 12
+~$
+</code></pre>
+
+<p>What's going on here? On our first two lines, we're prompting the user for input and storing those values to two separate variables. Then we use an "if" statement to check to see if the remainder of <code>multi / fact</code> is zero. If this is true, then we execute the code on the next line (line 5). Otherwise, we skip down to the "else" statement and execute that instruction. We can see, then, the first time we run the code, 12 / 4 has a remainder of 0, so the condition in the "if" statement is True. So you see the appropriate instruction is executed. On the other hand, in the second run of our code, 12 / 5 does have a remainder that is not equal to zero (it is equal to 2 specifically). As a result, the statement evaluates to False and we do not execute the code within the "if" block. Instead, we go down to the "else" and execute that code instead. Notice the instructions on the lines after <code>if</code> and <code>else</code> are indented one level. This signifies to the Python interpreter that they are part of the <code>if</code> or <code>else</code> block. A code block is a collection of code that only gets executed if some condition is met. In this case, the <code>if</code> block only gets executed when the condition we defined for if is True. Otherwise, the <code>else</code> block is executed. Regardless of the input (as long as it is valid input), either the <code>if</code> block will execute or the <code>else</code> block, but never both. </p>
+<p>We can also set up conditions with only an <code>if</code> block. Let's say we want a program to print "Happy Birthday" on a user's Birthday and not print anything else if it is not. That code would look like this:</p>
+<pre><code class="python">BIRTHDAY = &quot;05/02&quot;
+today = input(&quot;What is the date today (mm/dd)? &quot;)
+
+if BIRTHDAY == today:
+   print(&quot;Happy Birthday!&quot;)
+</code></pre>
+
+<p>Once again, I'll show you what it looks like when we run this code:</p>
+<pre><code>~$ python birthday.py
+What is the date today (mm/dd)? 05/02
+Happy Birthday!
+~$ python birthday.py
+What is the date today (mm/dd)? 03/12
+~$
+</code></pre>
+
+<p>I set <code>BIRTHDAY</code> as a constant value. Then the program prompts the user for the date with a hint at the format. I check to see if what the user entered matches or is equal to the value stored in <code>BIRTHDAY</code>. If it is, then the program prints "Happy Birthday!" and if it is not, then it does nothing. Once again, I show you what that looks like when we run the program in both cases. Sometimes it is useful to have code that only runs when a condition is satisfied. We can also use negative conditions, so if we wanted to congratulate the user that it's not their birthday, we'd need to change our condition to be <code>if BIRTHDAY != today:</code>. </p>
+<p>Finally, we can set a series of conditions. Perhaps we want to help someone who is trying to decide whether to wear a jacket or not based on the temperature: </p>
+<pre><code class="python">temp = int(input(&quot;What is the temperature? &quot;))
+
+if temp &gt; 70:
+   print(&quot;Wear Shorts&quot;)
+elif temp &gt; 50:
+   print(&quot;Pants and a wind breaker&quot;)
+elif temp &gt; 40:
+   print(&quot;Maybe a jacket?&quot;)
+else:
+   print(&quot;Bundle up, it's cold!&quot;)
+</code></pre>
+
+<p>In the above example, we have 4 conditions: warmer than 70 degrees, warmer than 50 degrees, warmer than 40 degrees, or colder than 40 degrees. This leads us to a cool design decision. In the <code>if/elif/else</code> or <code>if/else</code> structure only one of the blocks will be executed. Specifically, the first time the condition is True, the corresponding block is executed and the rest are skipped. So, in the above example, if the user inputs 75, only the first block will execute. It is true that 75 is also greater than 50 and 40, but Python stops at the first True condition and once we have a True condition none of the other blocks are executed. </p>
+<p>As a design decision, this allows us to check for warmer than 70, 50, and 40 without having to say <code>elif temp &gt; 50 and temp &lt;= 70:</code> for the second condition. <strong>We know that if the Python interpreter is even evaluating that condition, then the first condition failed and the temperature is 70 or less.</strong> The <code>else</code> acts as a fall through condition. If none of the specific cases is True, then the else block is executed. As you design your conditionals, you will find clever ways to short circuit the way you test truthiness that can make your code more efficient. </p>
+<p>Related to this, we can also test multiple conditions at the same time. For example, let's take our code from the last example and add a prompt for the rain. </p>
+<pre><code class="python">temp = int(input(&quot;What is the temperature? &quot;))
+rain = input(&quot;Are you expecting it to precipitate?(y/n) &quot;)
+
+if temp &gt; 70 and rain == &quot;n&quot;:
+   print(&quot;Wear Shorts&quot;)
+elif temp &gt; 50 and rain == &quot;n&quot;:
+   print(&quot;Pants and a wind breaker&quot;)
+elif temp &gt; 40 or rain == &quot;y&quot;:
+   print(&quot;Maybe a jacket?&quot;)
+else:
+   print(&quot;Bundle up, it's cold!&quot;)
+</code></pre>
+
+<p>You can see that we are testing two conditions each time. In the first two cases we use the key word <code>and</code> which means that the whole test or condition is True if--and only if--both conditions are true. In the third case, we use the key word <code>or</code> which means that at least one of the conditions must evaluate to True. So if it is warmer than 40 or it's raining or both, the code block is executed. There are other logical operators that can be used but mainly if we are testing truthiness for bits. I'll have a section at the end of this chapter discussing bitwise operations, but you can skip it if you're not interested.</p>
+<p>Finally, we can "nest" our conditions within conditions. Sometimes this is more efficient than having a bunch of conditions with multiple logic tests. For example, I might like to refactor my code again so there are fewer logic tests:</p>
+<pre><code class="python">temp = int(input(&quot;What is the temperature? &quot;))
+rain = input(&quot;Are you expecting it to precipitate?(y/n) &quot;)
+
+if rain == &quot;y&quot;:
+   print(&quot;Maybe a raincoat&quot;)
+else:
+   if temp &gt; 70:
+      print(&quot;Wear Shorts&quot;)
+   elif temp &gt; 50:
+      print(&quot;Pants and a wind breaker&quot;)
+   elif temp &gt; 40:
+      print(&quot;Maybe a jacket?&quot;)
+   else:
+      print(&quot;Bundle up, it's cold!&quot;)
+</code></pre>
+
+<p>You hopefully notice that there are several different ways to do things. Generally the way that is the most clear is the best in Python. In this case, we know that regardless, if it is raining, the program should tell the user to wear a raincoat, so there's no point in wasting the processing power checking the rest of the conditions. We simply short circuit the <code>if/else</code> structure if it happens to be raining. Now that you have a sense of these structures, I'm going to talk a bit about Booleans.</p>
+<h3 id="booleans">Booleans</h3>
+<p>Booleans are a primitive data type that is either True or False. Whenever we use a conditional, the condition returns a True or a False value. So <code>9 == 10</code> in Python asks the interpreter to assess whether nine equals ten. Obviously, this is not true so Python will return False. This is a particular type of data and False is not the same as the string "False". This data type is important to understand because it is the fundamental operation of the computer. At the level of the hardware, all of the operations of the computer are computed through boolean logic comparing binary bits. We can manipulate bits directly with Python using bitwise operators, and frequently the operation is much faster, but for our purposes here, we're not going to worry too much about that. </p>
+<p>Instead, we're going to focus on True and False and expressions that evaluate to True and False. True and False are the primitive data type for booleans, but other things can be evaluated by True and False through Truthiness tests. Here is a table of some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Boolean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>True</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>1 == 1</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>1 == 2</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>1 != 2</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td>False (empty strings are false)</td>
+</tr>
+<tr>
+<td><code>"a"</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>8 &gt; 6</code></td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>And so on. As you design your programs and work with control, you will write code that evaluates conditions. These conditions will evaluate to True or False, and the code will execute the block that corresponds to the passing test. The key take away besides the syntax is to recognize that you'll want to spend some time thinking about what conditions you want to evaluate and then what should happen when those conditions evaluate to a certain boolean value. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
