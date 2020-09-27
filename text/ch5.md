@@ -2,11 +2,32 @@
 
 ## Introduction to Flow Control
 
-Thus far, we've basically told the computer what to do and it has done it basically as we requested. However, in programming, one of our goals is to turn over more of the work to computers. We saw this a little bit with our speed conversion program. Instead of writing two different programs, one for MPH to KPH and another for KPH to MPH, we wrote one program with a decision in it that allowed the computer to decide which calculation to perform based on the user's input. This ability of a computer to make decisions based on input is a central part of **flow control**. Flow control refers to the controls that we build into our program that tell the computer when and how many times to execute a particular group of instructions. There are two separate parts of flow control: conditionals, which tell the computer to execute instructions based on a set of conditions, and iterators or loops, which tell the computer to execute instructions while a particular condition is true or for a particular number of times. In this chapter, we'll look at the first. In the next chapter we'll look at the second. 
+Thus far, we've basically told the computer what to do and it has done it basically as we requested. However, in programming, one of our goals is to turn over more of the work to computers. We saw this a little bit with our speed conversion program. Instead of writing two different programs, one for MPH to KPH and another for KPH to MPH, we wrote one program with a decision in it that allowed the computer to decide which calculation to perform based on the user's input. This ability of a computer to make decisions based on input is a central part of **flow control**. Flow control refers to the controls that we build into our program that tell the computer when and how many times to execute a particular group of instructions. There are two separate parts of flow control: conditionals, which tell the computer to execute instructions based on a set of conditions, and iterators or loops, which tell the computer to execute instructions while a particular condition is true or for a particular number of times. 
 
-## Conditionals: An example
+Generally, a flow control structure involves a few parts. There will be the reserved word in Python like ```if\else\while\for\try``` and then there will be a condition that is evaluated. Finally, there will be one or more blocks of code that could potentially be executed depending on the evaluation of the condition. Here is an example of the general format:
 
-To set the stage, let's say my user wants to figure out if one number is a factor of another number. A number is a factor if the second number can be divided evenly by the first. So, 4 is a factor of 12 because 12 can be evenly divided by 4. Programming languages give us the % (mod) operator to help us out with that. So let me write the program. It will prompt the user for two numbers. It will print "x is a factor of y" if the second number is a factor, and "Is not a factor" if not. 
+```
+{reserved word} {condition}:
+   {code block}
+{other reserved word}
+```
+
+A small example in Python:
+
+```python
+if x == 0:
+   print("X is zero")
+```
+
+The reserved word defines what kind of flow control is being executed. The flow of the program will either branch with one block of instructions being conditionally executed or not, or it will loop with a sequence of instructions being repeted a number of times until some condition is met.
+
+In this chapter, we'll look at the first. In the next chapter we'll look at the second. 
+
+## Conditionals: If/Else
+
+To set the stage, let's say my user wants to figure out if one number is a factor of another number. A number is a factor if the second number can be divided evenly by the first. So, 4 is a factor of 12 because 12 can be evenly divided by 4. Programming languages give us the % (mod) operator to help us out with that. This kind of flow control is a branching flow control because there are two branches of instructions that will be executed conditionally. One branch is executed if the number is a factor. The other branch is executed if not. 
+
+So let me write the program. It will prompt the user for two numbers. It will print "x is a factor of y" if the second number is a factor, and "Is not a factor" if not. 
 
 ```python
 mult = int(input("What is the multiple? "))
@@ -121,7 +142,43 @@ else:
 
 You hopefully notice that there are several different ways to do things. Generally the way that is the most clear is the best in Python. In this case, we know that regardless, if it is raining, the program should tell the user to wear a raincoat, so there's no point in wasting the processing power checking the rest of the conditions. We simply short circuit the ```if/else``` structure if it happens to be raining. Now that you have a sense of these structures, I'm going to talk a bit about Booleans.
 
-### Booleans
+## Conditionals: Try/Except
+
+This section is going to be a bit more advanced, and we will not be looking at errors and exceptions to any great length in this book. However, a common kind of forking flow control is the kind we use to catch errors. In the previous chapters, we talked about syntax errors and other sorts of errors. One type is the ValueError. This is an error that occurs when we try to do an operation that is not possible on a particular data type. For example, we cannot add a string to an integer and we cannot directly convert an alphabetic string to an integer. The following would throw an error:
+
+```python
+>>> int("Fish")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'Fish'
+>>>
+```
+
+That's annoying, of course. Now, we've prompted users to input numbers into our programs before. So far, we've trusted them to input a number. However, if they chose to input a string instead, our program would throw an error message and not work. Generally, it is much better for us to manage catch those errors rather than allow them to fail to the user or silently. Let's just look at a quick temperature conversion program that converts fahrenheit to celsius. 
+
+```python
+temp = int(input("What is the temperature in Fahrenheit? "))
+
+cels = (temp - 32) * (5/9)
+print("The temperature is {} degrees celsius".format(cels))
+```
+
+This works perfectly if the user inputs some number value when they are prompted, but if they type a string like "twenty five", the conversion to an integer that happens on the first line would throw a ValueError because "twenty five" is sequence of letters that cannot be converted into an integer by the computer. To deal with this error, I will put in a forking flow control that "Tries" to execute a particular operation, and if it fails, it catches the error message and does what I want it to do instead of just having the program break. Let me show you the code and I'll explain further:
+
+```python
+try:
+   temp = int(input("What is the temperature in Fahrenheit? "))
+   cels = (temp - 32) * (5/9)
+   print("it is {} degrees celsius".format(cels))
+except ValueError as err:
+   print("I'm sorry, you need to enter a number:", err)
+```
+
+Now, the flow fork begins with the key word ```try``` which tells the Python Interpreter to be prepared for a possible error. Then the ```try``` block is executed and if there is an error, the Interpreter looks to the ```except``` block. In this case, I have told the interpreter to prepare for a particular type of error, and I have given it a block of code to execute instead of just throwing the error message back to the user. Instead of the messy error message that reveals my code, I have a nice neat error message that is printed to the screen. I could also set this up to log the error to a log file so the user doesn't see any details. 
+
+Once again, we're not going to be using this in this book, but knowing that there is the type of forking flow control that is designed to handle errors is good. 
+
+## Booleans
 
 Booleans are a primitive data type that is either True or False. Whenever we use a conditional, the condition returns a True or a False value. So ```9 == 10``` in Python asks the interpreter to assess whether nine equals ten. Obviously, this is not true so Python will return False. This is a particular type of data and False is not the same as the string "False". This data type is important to understand because it is the fundamental operation of the computer. At the level of the hardware, all of the operations of the computer are computed through boolean logic comparing binary bits. We can manipulate bits directly with Python using bitwise operators, and frequently the operation is much faster, but for our purposes here, we're not going to worry too much about that. 
 

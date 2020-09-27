@@ -10,4 +10,5 @@ nav:
     - Encoding Identity: ch3.md
     - Anatomy of a Script: ch4.md
   - Flow Control:
-    - Conditions: ch5.md
+    - Branching Flow Control: ch5.md
+    - Looping Flow Control: ch6.md
