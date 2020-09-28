@@ -144,8 +144,109 @@ while factor &gt; 1:
    factor -= 1
 </code></pre>
 
-<p>What's happening here is I'm getting a number from the user. Then I'm setting the first factor to test. Then we enter a while loop that will continue going until factor is 1. Then we try and see if factor is a factor of number. If so, we print "Not prime" and exit the while loop with the <code>break</code> keyword. </p>
-<h2 id="loops-for-loop">Loops: For Loop</h2></div>
+<p>What's happening here is I'm getting a number from the user. Then I'm setting the first factor to test. Then we enter a while loop that will continue going until factor is 1. Then we try and see if factor is a factor of number. If so, we print "Not prime" and exit the while loop with the <code>break</code> keyword. Otherwise, if the value stored in <code>factor</code> is not a factor of <code>num</code> we decrease it by 1 and return to the condition. I'm going to write out the steps that occur when we run this script with the number six and the number 5. The lines in quotation marks are printed to the screen. The other lines are processes that the Python Interpreter performs.</p>
+<pre><code>Python Interpreter (PI): &quot;Enter a whole number&quot;
+Me: &quot;6&quot;
+PI: store 6 in the variable num.
+PI: store 6 - 1 in the variable factor
+PI: Is factor greater than 1? 5 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 6 / 5 equal to 0? False
+PI: Skip if block
+PI: Decrement factor by 1
+PI: Return to top of while loop.
+PI: Is factor greater than 1? 4 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 6 / 4 equal to 0? False
+PI: Skip if block
+PI: Decrement factor by 1
+PI: Return to top of while loop.
+PI: Is factor greater than 1? 3 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 6 / 3 equal to 0? True
+PI: Enter if block
+PI: &quot;Not Prime&quot; 
+PI: Exit while loop at &quot;break&quot;, end of program.
+</code></pre>
+
+<p>You'll notice that the <code>while</code> condition was tested exactly 3 times when factor what 5, 4, and 3. Once factor became 3, the <code>if</code> condition passed and the <code>while</code> loop was exited with <code>break</code>. Let's try again, when the <code>while</code> condition fails and the loop is exited that way.</p>
+<pre><code>Python Interpreter (PI): &quot;Enter a whole number&quot;
+Me: &quot;5&quot;
+PI: store 5 in the variable num.
+PI: store 5 - 1 in the variable factor
+PI: Is factor greater than 1? 4 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 5 / 4 equal to 0? False
+PI: Skip if block
+PI: Decrement factor by 1
+PI: Return to top of while loop.
+PI: Is factor greater than 1? 3 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 5 / 3 equal to 0? False
+PI: Skip if block
+PI: Decrement factor by 1
+PI: Return to top of while loop.
+PI: Is factor greater than 1? 2 &gt; 1 is True
+PI: Enter while block.
+PI: Is the remainder of 5 / 2 equal to 0? False
+PI: Skip if block
+PI: Decrement factor by 1
+PI: Return to top of while loop.
+PI: Is factor greater than 1? 1 &gt; 1 is False
+PI: Skip while loop. End of file, end of program.
+</code></pre>
+
+<p>The <code>while</code> condition was tested 4 times and failed on the last time because the <code>factor</code> was decreased to 1. The <code>if</code> condition was also tested 4 times and failed each time so the <code>print()</code> and the <code>break</code> were never executed. </p>
+<p>This, of course, is not the best way to find primacy of numbers, but it does illustrate that the <code>while</code> loop execution count is indeterminate. The action of the user or some external condition that the programmer does not have control of defines how many times the <code>while</code> loop runs. In fact, this leads us to an important consideration: what happens if the <code>while</code> condition never evaluates to <code>False</code>? The loop will continue forever until the computer runs out of resources and freezes or the power is cut. Have you ever landed on a website that made your web browser freeze? Sometimes this is because there is a bug like this in the web page. Modern web browsers have become more sensitive to scripts that cause the page to slow down, but it used to happen sometimes. When you write a loop that has a condition that may never be satisfied, it is called an <strong>infinite loop</strong> and that is something to avoid. As a result, it is good to determine what has to occur to get the loop to end, and frequently it is a good idea to add a fail safe. So maybe the loop should run indefinitely, but less than one million times. I'd add a counter that will stop the loop automatically after one million revolutions if it hasn't stopped by then. </p>
+<pre><code class="python">x = 27
+count = 0
+while x == 27 and count &lt; 1000000:
+   print(&quot;I could be an invinite loop&quot;)
+   count += 1
+</code></pre>
+
+<p>In the loop above, since I'm not doing anything to change the value of <code>x</code> and it is set to 27 by default, the loop would never end. Fortunately, I've also added a counter variable that increases each time the loop runs. Eventually count will get to one million, at which point the loop will exit. This is a silly example, because the loop doesn't do anything, but sometimes you might create a loop like this: </p>
+<pre><code class="python">while True:
+   print(&quot;I am infinite&quot;)
+</code></pre>
+
+<p>We can add a counter to make sure that the <code>while</code> loop ends eventually like this:</p>
+<pre><code class="python">i = 0
+while True and i &lt; 1000000:
+   print(&quot;I'm less than infinite&quot;)
+   i += 1
+</code></pre>
+
+<p>The failsafe is not required, and sometimes it doesn't make sense, but as you solve problems with code, you should be trying to think of all the potential cases that could occur. Avoiding infinite loops is part of this concern.</p>
+<h2 id="loops-for-loop">Loops: For Loop</h2>
+<p>The other type of loop is a <strong>definite</strong> loop. A definite loop is one that repeats a known number of times. For example, perhaps you have a list of values that you want to print. This list has a specific length, and so the loop will only continue for the length of the list. We will talk about definite loops more when we start looking at more complex data types, but for now you just need to know that a definite loop has a predetermined end. These loops use the <code>for</code> keyword in Python. I don't feel like the syntax is particularly clear; however, so I want to show you how these loops work in another language first that is a bit more obvious. This example is Java:</p>
+<pre><code class="Java">for (int i = 0; i &lt; 10; i++) {
+   println(i);
+}
+</code></pre>
+
+<p>The condition says create a variable called <code>i</code> and set it equal to zero, repeate the loop until <code>i</code> is ten and then stop, increment or increase <code>i</code> by one each time.</p>
+<p>The same loop in Python would look like this:</p>
+<pre><code class="python">for i in range(10):
+   print(i)
+</code></pre>
+
+<p>Both the Java and the Python <code>for</code> loops will execute 10 times because i is 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, and then when i is 10, the the <code>for</code> block of code is skipped. For Java, we create an integer variable that holds a whole number that is increased with each iteration. Python creates a range object, which is a list of numbers from 0 to (but not including) the number that we pass to <code>range()</code> inside the parentheses. Then the <code>for</code> loop walks through each number in the list, assigns that number to i, and performs the instructions inside the <code>for</code> block. In this case, it will print the value stored in <code>i</code> to the screen. </p>
+<p>I'll give you a more extended example that tells Python to print the song <a href="https://en.wikipedia.org/wiki/99_Bottles_of_Beer">99 Bottles of Beer</a>.</p>
+<pre><code class="python">for i in range(99, 0, -1):
+   print(&quot;{} bottles of beer on the wall&quot;.format(i))
+   print(&quot;{} bottles of beer&quot;.format(i))
+   print(&quot;take one down, pass it around&quot;)
+   print(&quot;{} bottles of beer on the wall\n\n&quot;.format(i - 1))
+
+print(&quot;No more bottles of beer on the wall&quot;)
+print(&quot;No more bottles of beer&quot;)
+print(&quot;There's nothing else to fall&quot;)
+print(&quot;Because there's no more bottles of beer on the wall.&quot;)
+</code></pre>
+
+<p>Forgive the extra print statements. We could probably be a bit more efficient in our code, but let's look at the <code>for</code> condition. We have a range that starts with 99, ends with but does not include 0, and decreases by 1 each time. So the list would look like [99, 98, 97, ..., 2, 1]. For each value in that list, the <code>for</code> block is executed. Once the iterations of the <code>for</code> loop reach the end of the list, the loop is stopped, and we move on to the final sequence of 4 print statements.</p>
+<p>As we move on to more complex data structures next chapter, you'll see that these flow control structures become extremely useful.</p></div>
             </div>
         </div>
 
