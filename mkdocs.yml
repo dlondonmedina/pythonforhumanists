@@ -12,3 +12,6 @@ nav:
   - Flow Control:
     - Branching Flow Control: ch5.md
     - Looping Flow Control: ch6.md
+  - Data Types:
+    - Primitive and Compound: ch7.md
+

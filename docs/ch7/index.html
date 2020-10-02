@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Primitive and Compound - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch6/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#data-types" class="nav-link">Data Types</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#primitive-data-types" class="nav-link">Primitive Data Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abstract-data-types" class="nav-link">Abstract Data Types:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="data-types">Data Types</h1>
+<p>Any given program has two major components, whether that program is a web application, a simple website, a complex machine learning program, etc.</p>
+<p>The program will have data, and it will have procedures. Data is the "stuff" of the program. It might be text, numbers, file locations, and so on. These are the "values" that are stored in memory that you have access to throughout the program (depending on their scope). </p>
+<p><img alt="Data yawning" src="https://media.giphy.com/media/q8tdrdtO2FRsc/giphy.gif" /></p>
+<p>Every time you declare a variable, you're creating space in memory (RAM) to store some sort of data. When you run out of storage space (RAM), your program will freeze. So, if you're running a machine learning program on a small Digital Ocean droplet that gives you 500MB of RAM, and your program calls into memory a model that is 700MB, the program will freeze because there isn't enough space in memory.</p>
+<p>Procedures on the other hand are the actions that are done by the program. If you want to compare programming to language, you might think of data as the nouns and actions as the verbs. Procedures can either be written out in a procedural style, bundled into functions, encapsulated into objects (next week), or a combination of the three. So far, we've looked at some data types, but have focused more on the procedures.</p>
+<p>Now we can pause and look at some of the data types that Python provides you with. Data types are ways to hold information based on what that information is. These are either Primitive or Abstract.</p>
+<h2 id="primitive-data-types">Primitive Data Types</h2>
+<p>You've encountered all of the primitive data types in Python. Primitive data types are whole pieces of data rather than collections of smaller pieces. So a number might be a single piece of data, and therefore it is a primitive data type.</p>
+<ul>
+<li>
+<p>Integers--Whole numbers with no decimal points.</p>
+</li>
+<li>
+<p>Floats -- Non-whole numbers or numbers with decimal points (17.5, 17.0, etc.)</p>
+</li>
+<li>
+<p>Boolean -- This data type represents True or False and is what is returned when conditions from conditionals are evaluated</p>
+</li>
+<li>
+<p>Strings (sort of) -- Strings are weird in Python. They are kind of primitive in the sense that we can treat them as whole units, but in reality they are lists of characters. </p>
+</li>
+</ul>
+<h2 id="abstract-data-types">Abstract Data Types:</h2>
+<p>Abstract Data types are generally larger storage structures that contain collections of smaller data types. These include <strong>lists</strong>, <strong>tuples</strong>, <strong>sets</strong>, and <strong>dictionaries</strong>. The reason we have abstract data types is because sometimes we have more than one datum that should be aggregated together in a logical way. For example, if you are looking at, say, a whole bunch of temperature readings for the month of March, you could save each one in it's own variable: that would look like this:</p>
+<pre><code class="python">m1 = 56
+m2 = 57
+m3 = 62
+...
+m30 = 68
+m31 = 65
+</code></pre>
+
+<p>But that looks really inefficient and accessing all of those temperatures requires you to explicitly reference each individual variable. Wouldn't it be nice if we could put all of those temperatures in a list to hold all of the March temperatures? What if we could then get the temperature for a particular day by referencing the day number in the list? Well, we can. The data structure--a list--allows us to do exactly that. </p>
+<pre><code class="python">march_temps = [56, 57, 62, ... , 68, 65]
+</code></pre>
+
+<p>To get the temperature from March 5th, you'd just need to access <code>march_temps[4]</code>, which will give us the 5th element in the list. Abstract data types allow us to store data in larger structures in meaningful ways. </p>
+<h3 id="lists-ordered-heterogenous-sequences-of-data">Lists--ordered, heterogenous, sequences of data</h3>
+<p>We've touched on lists briefly with strings. Unlike primitive data types that hold one piece of data (a number or a string or a boolean or an integer), lists hold a series of data. By heterogenous, I mean that each piece of data need not be the same, so you could have a list that contains integers, strings, lists, and so on. Though, I think this is not a great practice. For instance, what if I have a bunch of student names that I want to store. It doesn't make much sense to store them all in individual variables or else I'd have a bunch of variables to manage. Instead, I can use a list that will help me manage these names in one single variable.</p>
+<pre><code class="python">students = ['Joseph', 'Omar', 'Sue', 'Wendy', 'Natasha']
+</code></pre>
+
+<p>A list gives me a useful way to organize all those pieces of data. There are a few keys to remember about lists.</p>
+<ol>
+<li>
+<p>Lists are ordered by index. This means that each value corresponds to a particular position in the list. The first item in a list is index 0. The last is the n-1 where n is the length of the list. They never get out of order unless you explicitly change them.</p>
+</li>
+<li>
+<p>Lists can contain different types of data at each index.</p>
+</li>
+<li>
+<p>Lists can be sliced (you can grab a chunk of the list by index number), iterated over, and so on.</p>
+</li>
+<li>
+<p>Lists are mutable. This means their values at each index can be changed. Also, they can be shrunk or expanded as you like.</p>
+</li>
+<li>
+<p>You may have guessed, but all strings are lists of characters. This is not the same in all programming languages, but in Python, all of the list methods (see #6) can be used on strings.</p>
+</li>
+<li>
+<p>Lists have many built-in methods. To read all about them, check out <a href="https://docs.python.org/3/tutorial/datastructures.html?highlight=list">this link</a>.</p>
+</li>
+</ol>
+<h3 id="tuples-ordered-heterogenous-ummutable-sequences-of-data">Tuples--ordered, heterogenous, ummutable sequences of data</h3>
+<p>uples are one of the more confusing features for those new to Python. In form, a tuple looks very much like a list. Let's compare:
+List:</p>
+<pre><code class="python">names = ['Sylvia', 'Eric', 'Bobby', 'Cassandra']
+</code></pre>
+
+<p>Tuple:</p>
+<pre><code class="python">names = ('Sylvia', 'Eric', 'Bobby', 'Cassandra')
+</code></pre>
+
+<p>I can iterate through both in the same way. They are both indexed and the order is constant. So what's the difference? The major difference is that lists can change, and tuples cannot. If I want to change the list names, I can run the append() method on it to add another item, or I can replace the values in any index, or I can pop off a value from my list without creating a new list. Tuples cannot change. They are what we call immutable. Once I've created a tuple, it will always retain the same length and values in the same indices.</p>
+<p>What's the point? There are a few big reasons we might use a tuple rather than a list.</p>
+<p>First, a tuple, being immutable, provides substantial optimization for your code. Check this out:</p>
+<pre><code class="bash">user1@DESKTOP-61VJ97U:~$ python3 -m timeit &quot;['Sylvia', 'Eric', 'Bobby', 'Cassandra']&quot;
+10000000 loops, best of 5: 34.3 nsec per loop
+user1@DESKTOP-61VJ97U:~$ python3 -m timeit &quot;['Sylvia', 'Eric', 'Bobby', 'Cassandra']&quot;
+10000000 loops, best of 5: 34.2 nsec per loop
+user1@DESKTOP-61VJ97U:~$ python3 -m timeit &quot;('Sylvia', 'Eric', 'Bobby', 'Cassandra')&quot;
+50000000 loops, best of 5: 4.87 nsec per loop
+user1@DESKTOP-61VJ97U:~$ python3 -m timeit &quot;('Sylvia', 'Eric', 'Bobby', 'Cassandra')&quot;
+50000000 loops, best of 5: 4.9 nsec per loop
+</code></pre>
+
+<p>Timeit runs the code for n loops 5 times and gives you the best average. So, we created the list 10 million times and found the average per loop time was 34.3 nanoseconds and 34.2 nanoseconds. In the second case, we created the same series as a tuple, but this time we did it 50 million times and found that the average loop time was 4.87 adn 4.9 nanoseconds per loop. For a small list, this isn't a bit difference, but imagine if our sequence had a million items in it. </p>
+<p>Tuples provide a great performance boost, but they can't be changed, so if you want to alter the values stored in them, you can't. Tuples are most often used to store a sequence of related values, like a sequence of values pulled from a database. Additionally, tuples are hashable, so we can compare two tuples or use them as keys in a dictionary. </p>
+<h3 id="sets-unordered-collections-of-unique-values">Sets--unordered collections of unique values</h3>
+<p>Sets are also collections of values like a list or a tuple, but they differ in a few important ways. First, they are unordered. This means that if you add a value to a set, you cannot know what index that value might be found at. Second, every value in a set must be unique. To create a set we use curly brackets:</p>
+<pre><code class="python">my_set = {'apples', 'bananas', 'grapefruits'}
+</code></pre>
+
+<p>Sets are useful for getting unique values. If I wanted to get unique values in a list, maybe the fastest way would be to add the elements in the list to a set. The resulting set would only keep the unique elements. Sets are also extremely fast for lookups to see if a particular value is present in the collection.</p>
+<h3 id="dictionaries-collections-of-key-value-pairs">Dictionaries--collections of key value pairs</h3>
+<p>A dictionary is another compound data type. It is used to store data in what's called key-value pairs. What this means is that each value has an identifying key or name that you can use to find that value easily. Remember with lists to find an item, you had to know its index, but with a dictionary, you just need to know its key. The basic syntax for a dictionary is {'key': 'value', 'key2': 'value2'...} This means each key and value are paired with each other. Let's take a quick look.</p>
+<pre><code class="python">classes = {'name': 'everyday coding', 'students': 'Matt', 'day': 'Wednesday', 'location': 'Admn 306'}
+</code></pre>
+
+<p>So, my classes dictionary keys are 'name', 'students', 'day', and 'location'. Each of these has a corresponding value. If I want to get the name of the class, I just need to call classes['name']. This is very useful for larger complex data sets where you want to be able to pluck out a specific value. Here are some keys to dictionaries:</p>
+<ol>
+<li>
+<p>Like lists, dictionaries are mutable. They can change length and any value in them can change.</p>
+</li>
+<li>
+<p>Unlike lists, dictionaries are not strictly ordered. There's no guarantee that the first item in the list will always be first. Maybe it will, maybe it won't. So it's totally unreliable to try to grab an item by its index like you did with lists.</p>
+</li>
+<li>
+<p>Dictionaries can hold any types of data as long as they are in key-value pairs. Keys are generally memorable strings. the value could be any type including lists, dictionaries, and tuples. In fact, I'd probably create the dictionary above as more complex.</p>
+</li>
+</ol>
+<pre><code class="python">classes = {'everyday' : {'students':['Matt'], 'location': 'Admn 306', 'day': 'Wednesday'}, 'intro': {...}}
+</code></pre>
+
+<p>Please read the <a href="https://docs.python.org/3/tutorial/datastructures.html?highlight=dictionaries#dictionaries">following to learn more about dictionaries</a></p>
+<p>You'll also notice that dictionaries look like data structures in other languages. In Javascript, they are similar to objects and in PHP they are the same as associative arrays. Be aware, if you're using Python to process JSON objects you need to parse the object into a dictionary before you can work with it.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
