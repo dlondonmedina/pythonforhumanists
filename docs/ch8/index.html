@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Introduction to Functions - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="../ch9/" class="dropdown-item">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="../ch10/" class="dropdown-item">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch7/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../ch9/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction-to-functions" class="nav-link">Introduction to functions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#making-it-generic" class="nav-link">Making it Generic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction-to-functions">Introduction to functions</h1>
+<h2 id="making-it-generic">Making it Generic</h2>
+<p>Programmers are inherently lazy. By this I mean, programmers write as little code as they possibly can. This is useful for a few reasons. First, the fewer lines of code you write, the less likely you are to have an error. Second, if you refactor your code, you have fewer places to make changes. Third, you get to spend less time writing code and more time working on other things.</p>
+<p>How do we make something generic? Think about making a peanut butter and jelly sandwich. If I were to give you instructions they might include these steps (I've cut out a lot to not waste your time):</p>
+<ol>
+<li>
+<p>Use hand and turn peanut butter jar lid until the lid is loose.</p>
+</li>
+<li>
+<p>Lift lid off jar.</p>
+</li>
+<li>
+<p>Place the lid on the counter.</p>
+</li>
+<li>
+<p>Use hand and turn jelly jar lid until the lid is loose.</p>
+</li>
+<li>
+<p>Lift lid off jar.</p>
+</li>
+<li>
+<p>Place the lid on the counter.</p>
+</li>
+</ol>
+<p>Notice that I have two series of steps that are basically the same, but are done on different kinds of jars. A much simpler way would be to first make sure you know what the generic sequence of steps is "Use hand to turn, lift lid, place lid on counter." We do this in our own language. Instead of telling someone all those steps, we'd say, "open the jar." The human audience would know that openning the jar involves more smaller actions, but they group those actions into openning the jar. The general activity of opening jars can be done on any sort of jar as long as it has a lid and is opened by turning. Computers give us the same thing, but we need to teach them what a group of general actions are called. What I would do is create a collection of actions called, "open ____ jar" and then my program becomes:</p>
+<ol>
+<li>
+<p>Open the jelly jar.</p>
+</li>
+<li>
+<p>Open the peanut butter jar.</p>
+</li>
+</ol>
+<p>I cut the steps down from 6 to 2, and if I want to change the process, I just need to redefine what I mean by "Open." I took a series of steps and made them general enough to be applied to various types of jars.</p>
+<p>Generalization in programming works very much like this. Let's say I want to test if a series of lists of numbers are even, and if they are add them to a list of numbers.</p>
+<p>I could do something like this where I write out the instructions for each list:</p>
+<pre><code class="python">my_nums1 = [5, 2, 7, 8, 0]
+my_nums2 = [10, 15, 8, 8, 4]
+my_nums3 = [1, 7, 4, 5, 3, 6]
+evenNums = []
+
+for num in my_nums1:
+  if num % 2 == 0:
+    evenNums.append(num)
+
+for num in my_nums2:
+  if num % 2 == 0:
+    evenNums.append(num)
+
+for num in my_nums3:
+  if num % 2 == 0:
+    evenNums.append(num)
+</code></pre>
+
+<p>After Python executes these instructions <code>evenNums</code> will contain the even values from all three lists. However, it's not particularly efficient. Notice the code is exactly the same except for the name of the list that is to be iterated through. Wouldn't it be easier to write the instructions once in my code and then call the instructions on each of the lists? Totally. I'm going to build what is called a function that makes the instructions work on any list. </p>
+<pre><code class="python">evenNums = []
+my_nums1 = [5, 2, 7, 8, 0]
+my_nums2 = [10, 15, 8, 8, 4]
+my_nums3 = [1, 7, 4, 5, 3, 6]
+
+def get_even(my_list):
+   for num in my_list:
+      if num % 2 == 0:
+         evenNums.append(num)
+
+# now I call the function on each of the lists. 
+
+get_even(my_nums1)
+get_even(my_nums2)
+get_even(my_nums3)
+</code></pre>
+
+<p>This is cool because I took a specific set of instructions that were repeated, figured out how the action could be generalized, and finally wrote those instructions into a general function that can operate on many input values. Also, if I wanted to tweak this slightly, then I could change the 2 to a 3 or any other multiple to find the numbers that are multiples of that number. In fact, I could even generalize further expanding the functionality of my function. </p>
+<pre><code class="python">evenNums = []
+my_nums1 = [5, 2, 7, 8, 0]
+my_nums2 = [10, 15, 8, 8, 4]
+my_nums3 = [1, 7, 4, 5, 3, 6]
+
+def get_mulitple(my_list, multiple):
+   for num in my_list:
+      if num % multiple == 0:
+         evenNums.append(num)
+
+# add to evenNums multiples of 5 from list 1
+get_multiple(my_nums1, 5) 
+# add to evenNums multiples of 2 from list 1
+get_multiple(my_nums2, 2)
+# add to evenNums multiples of 3 from list 1
+get_multiple(my_nums3, 3)
+
+</code></pre>
+
+<p>Building functions is about taking instructions, identifying what variables you want to generalize out, and turning those into arguments that the function can receive from the user or another program calling this function.</p>
+<h3 id="anatomy-of-a-function">Anatomy of a function</h3>
+<p>Now that you've seen some functions in action, I want to point out the anatomy of a function. A function has three main parts: <strong>the input</strong>, <strong>the output</strong>, and <strong>the block</strong>. The input is anything that the function takes in from outside. This could be an argument or parameter--the things that go between the parentheses in the function definition and call. It could also be user input using the <code>input()</code> function, although I generally try to reserve this for a separate user interface unless the program is very small and single-purposed. Finally, the input could also come from files or other data streams that get opened in the body of the function.</p>
+<p>The output is whatever the function returns to the scope outside the function. This could be printing or writing to some user interface or file. More commonly, the output is whatever is after the <code>return</code> statement. This keyword is the instruction that sends data from inside the function to outside. Think of it like a vending machine. You put money and data into the machine. The machine does some stuff internally (usually you can see that stuff through the window) and finally, it returns a candy bar to you. Once again, just like the input, I like to use the <code>return</code> statement for the output and create a separate user interface to print the data to the screen or otherwise share it with other processes or the user. </p>
+<p>Finally, the block is the set of instructions that are executed every time the function is called. Notice that there might be variables, operations, logic checks, branches, etc. within the function. Another thing to notice is that I might have a variable with the same name inside the function, inside the parameter of the function and in the instructions outside of the function. See <code>search_words</code> in the next chapter as an example. The variable, even if it has the same name, refers to a different space in memory. So if I have <code>x</code> as a variable outside of the function, and then I have <code>x</code> as the parameter of the function, and I have an <code>x</code> in the body of the function, you should think of them as three different variables that might hold different values. </p>
+<p>Here is the explanation again in code:</p>
+<pre><code class="python"># Here's a function with it's parts identified:
+
+def my_crazy_function(x): # &quot;def&quot; is a keyword that means you're making a function. def is followed by the name of the function. It can either be camelCase or snake_case. Following the function name you have parentheses which contain all of the parameters for the function. 
+  # The block--all the instructions that are part of the function.
+  x = x ** x
+  return x # This is what the function outputs to the rest of the program.
+
+# Whenever you want to call a function, you simply include the function name with any parameters.
+x = 7
+output = my_crazy_function(x) #in this line, the program will do the instructions in the function.
+</code></pre>
+
+<p>The <code>x</code> in the parameter (<code>my_crazy_function(x)</code>) is a different variable than the <code>x = 7</code> variable. Finally, the line <code>x = x ** x</code> means "create a new variable called <code>x</code> that is local to the function (only exists inside the function) and save to it the value of the parameter <code>x</code> to the power of the parameter <code>x</code>. I know this is confusing, perhaps, but it is worth taking some time to consider this and pay attention to it because it is very common for a program to have the same variable name used for different variables in different scopes.</p>
+<h3 id="scope">Scope</h3>
+<p>Not the mouthwash, scope refers to where different data is accessible. This is a complicated topic that leads to a lot of grief. We will spend a good deal of time discussing scope in class and in next week's module. For now, think of it as what container or block does a piece of data live in. If I have a variable "my_var" inside a function, I the program can only access that variable inside of the function. It cannot access the if I try to use it outside, or it would be a different variable.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

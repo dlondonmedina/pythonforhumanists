@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Decomposition - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch8/" class="dropdown-item">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="../ch10/" class="dropdown-item">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch8/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../ch10/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#decomposition" class="nav-link">Decomposition</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#approaches-to-decomposition" class="nav-link">Approaches to Decomposition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="decomposition">Decomposition</h1>
+<p>You've seen in the last couple weeks the way in which we need to divide up a particular task into steps if we want to make a computer program. This is crucial because the program can only perform one command at a time (unless we're multi-threading, but that's a topic for another class), and that one command has to be a single specific action. As a result, if we want to create computer programs that solve real-life problems, we need to be able to break those problems into a series of parts, and our solution needs to be a series of steps that the computer can perform sequentially.</p>
+<p>This process of breaking a process down into its component steps is called Decomposition. In terms of programming, it's impossible to solve complex problems or build systems without doing this. In terms of general problem solving, decomposition can help us make complex situations and tasks more approachable. For instance, if I say, "write a 30 page essay that argues that technological capital is a better lens to understand technological inequality than the digital divide" you could just start writing, but that would be overwhelming. Instead, you'd be better to divide that problem into a bunch of individual components. For instance, you'll need a section that defines technological inequality, another set of sections that look at individual elements of that problem, another section that defines technological capital, and so on. Each of those sections is an approachable task. But I digress...</p>
+<p>Let's think about a process that we might want to solve: I want to create a process that reads text and finds occurrences of particular words in a text. This could be useful for looking for jargon words or dog-whistles and slurs or vocabulary words in use. Look below at the way I've broken this process into some functions.</p>
+<p>For this example, I've set myself up with the project of creating a program that reads a text, identifies if keywords are in the text, and returns a score based on frequency of those words. I might use this to score texts for the presence of racist or sexist language.</p>
+<p>First I need to get the list of search words. This should either be passed as an argument or parameter, OR it could be entered directly from the terminal. I'll write this into my program in pseudocode, first. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># function called get_search_words that takes a parameter, or it prompts the user in the cli.
+
+# check and see if there's a parameter.
+# if not prompt the user for a file or for direct input
+# if file, open the file and read it in
+# if not file, prompt user for a list of words. I better make sure there's a maximum number.
+# if the user changes their mind, give them a way to quit. 
+</code></pre>
+
+<p>You'll notice that I start with a list of steps that I need to do. If I have no idea how to do any given step, I'll isolate that step and try to figure out how to do that one instruction. Let's start with the first bit. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   # if file, open the file and read it in
+   # if not file, prompt user for a list of words. I better make sure there's a maximum number.
+   # if the user changes their mind, give them a way to quit.
+
+   return search_words
+</code></pre>
+
+<p>Okay, so I have my function defined and the case where the search words are passed as a parameter. That's great news. Now I need to think about the instructions to prompt a user for how they want to enter the search words. I can do this next. Notice, if there are search words in the parameter, the parameter is returned and the function will exit. The only way the program ever gets to the line <code>search_words = []</code> is if <code>search_words</code> in the parameter is empty. So, let's get to prompting the user. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      pass
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      # make sure we have a maximum number.
+      pass
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+</code></pre>
+
+<p>You can see that now my program has 4 potential forks. The first tong is if there is a parameter. Then we just return that list. The second is if the user enters "f" or "F" for a file entry. We have used <code>pass</code> as a placeholder for now. The third is if the user enters "m" or "M" for manual entry. Again, we have a placeholder. The fourth condition is default, so if the user enters anything besides "f", "F", "m", or "M", the program will exit with a None value returned. That I create a default rather than check for "Q" is a design decision. I designed it that way so that the program exits if, say, the user enters a typo or a wrong letter. I use this default case to catch everything except the specific values I'm looking for. That is a good design strategy because now I don't have to worry about what happens if the user enters "X" or "47" or anything else. The program will just exit. Next, I'll do a big chunk, and create instructions for manual text entry. I'm going to limit the list arbitrarily to 10 search words. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      pass
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      count = 1
+      more = True
+      while count &lt; 11 and more:
+         word = input(&quot;Enter word # {}: (q to exit)&quot;.format(count))
+         # make sure we have a maximum number.
+         if word.lower() == &quot;q&quot;:
+            more = False
+         else:
+            search_words.append(word)
+         count += 1
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+</code></pre>
+
+<p>Okay, so that's pretty swell. Now I have a counter that limits my manual prompting to 10 words. I also have a variable <code>more</code> which is set to <code>False</code> if the user decides they want to quit. Then the word is added to the <code>search_words</code> list. If I needed to look at how to add to a list, I'd search for something on Google like, "Python3 add element to list." Now, I need to figure out how to open a file. I'm going to do that by searching "Python 3 open and read files." I'll find the <a href="https://docs.python.org/3/library/functions.html?highlight=open#open">open() function</a> that's built in to Python that opens files. I see that it is a function that takes a file name as a parameter. By default, it will only read files, but I can change the mode to 'w' for writing. The function returns a file object, so if I store the output of the <code>open()</code> function to a variable, the variable will contain a handle to that file object. I'll start by playing around and seeing if I can write "Good Morning" to a file. I'll do this playing in the Python CLI before I return to my program.</p>
+<pre><code class="python">Python 3.8.5 (default, Jul 28 2020, 12:59:40)
+[GCC 9.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; f = open(&quot;test.txt&quot;)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+FileNotFoundError: [Errno 2] No such file or directory: 'test.txt'
+&gt;&gt;&gt; f = open(&quot;test.txt&quot;, 'w')
+&gt;&gt;&gt; f.write(&quot;Good Morning&quot;)
+12
+&gt;&gt;&gt; f.read()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+io.UnsupportedOperation: not readable
+&gt;&gt;&gt; f.close()
+&gt;&gt;&gt; f = open(&quot;test.txt&quot;)
+&gt;&gt;&gt; f.read()
+'Good Morning'
+&gt;&gt;&gt;
+</code></pre>
+
+<p>I see that I can open a new file in write mode. I can write some text to the file. Then I need to close the file and open it again before I can read from it. I do that, and when I read the file, I see that 'Good Morning' was added to the file. Next I do a little research and read about the <code>with {} as {}:</code> syntax. This allows me to open a file and close it with fewer lines of code. Let's test it out. </p>
+<pre><code class="python">&gt;&gt;&gt; with open('test.txt', 'w') as f:
+...     f.write('Good Evening')
+...
+12
+&gt;&gt;&gt; with open('test.txt') as f:
+...     f.read()
+...
+'Good Evening'
+&gt;&gt;&gt;
+</code></pre>
+
+<p>Cool, so now I have a bit of a sense of how to open, write, and read from files. I might go on and test how to read multiple lines of a file or how to iterate through a file line by line. I'll learn that by using <code>readlines()</code> instead of <code>read()</code> on the file, I can read each line into a list. Now I'll jump back to the code and add what I learned:</p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      file_name = input(&quot;Enter the name of the file: &quot;)
+      with open(file_name) as f:
+         search_words = f.readlines()
+
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      count = 1
+      more = True
+      while count &lt; 11 and more:
+         word = input(&quot;Enter word # {}: (q to exit)&quot;.format(count))
+         # make sure we have a maximum number.
+         if word.lower() == &quot;q&quot;:
+            more = False
+         else:
+            search_words.append(word)
+         count += 1
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+</code></pre>
+
+<p>This is all well and good. I'm going to read the lines of the file. This will basically work. My next step will be to write a driver that tests the function. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      file_name = input(&quot;Enter the name of the file: &quot;)
+      with open(file_name) as f:
+         search_words = f.readlines()
+
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      count = 1
+      more = True
+      while count &lt; 11 and more:
+         word = input(&quot;Enter word # {}: (q to exit)&quot;.format(count))
+         # make sure we have a maximum number.
+         if word.lower() == &quot;q&quot;:
+            more = False
+         else:
+            search_words.append(word)
+         count += 1
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+
+if __name__ == &quot;__main__&quot;:
+   words = ['apple', 'blueberry', 'mango']
+   s_words = get_search_words(words)
+   print(&quot;Original words: &quot;)
+   for w in words:
+      print(w)
+
+   print(&quot;Search Words&quot;)
+   for w in s_words:
+      print(w)
+
+   s_words2 = get_seard_words()
+   for w in s_words2:
+      print(w)
+</code></pre>
+
+<p>I can run this and see what happens. Now to finish out my program, and I'll need to write a second function that uses the output from <code>get_search_words</code> that will take a block of text and list of search words, and return the total number of search words found, the total number of words, and percentage of total words the search words make up. </p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      file_name = input(&quot;Enter the name of the file: &quot;)
+      with open(file_name) as f:
+         search_words = f.readlines()
+
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      count = 1
+      more = True
+      while count &lt; 11 and more:
+         word = input(&quot;Enter word # {}: (q to exit)&quot;.format(count))
+         # make sure we have a maximum number.
+         if word.lower() == &quot;q&quot;:
+            more = False
+         else:
+            search_words.append(word)
+         count += 1
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+
+
+def text_scorer(text, search_words):
+   # iterate through search_words and get the frequency of each
+   # in the text. Also create a variable to store the count.
+   word_counter = 0
+   total_words = len(text.split(&quot; &quot;))
+
+   for word in search_words:
+      word_counter += text.count(word)
+
+   output = (word_counter, total_words)
+
+
+if __name__ == &quot;__main__&quot;:
+   words = ['apple', 'blueberry', 'mango']
+   s_words = get_search_words(words)
+   print(&quot;Original words: &quot;)
+   for w in words:
+      print(w)
+
+   print(&quot;Search Words&quot;)
+   for w in s_words:
+      print(w)
+
+   s_words2 = get_seard_words()
+   for w in s_words2:
+      print(w)
+</code></pre>
+
+<p>That was pretty easy. I just use the built in <code>count()</code> function and keep a running total. Now I just need to modify the driver so that we can get it working as we like:</p>
+<p><em>myprogram.py</em></p>
+<pre><code class="python"># fuction called search words with a parameter
+def get_search_words(search_words):
+
+   # check and see if there's a parameter, and if so return it.
+   if search_words:
+      return search words # this is the end of function in this branch
+   # if we get to this point, the user is entering the words manually
+   search_words = []
+   # if not prompt the user for a file or for direct input
+   user_in = input(&quot;Entry method: (f)ile, (m)anual, (Q)uit&quot;)
+   # if file, open the file and read it in
+   if user_in.lower == &quot;f&quot;:
+      #do stuff for the file
+      file_name = input(&quot;Enter the name of the file: &quot;)
+      with open(file_name) as f:
+         search_words = f.readlines()
+
+   elif user_in.lower == &quot;m&quot;:
+      # do a manual entry instructions
+      count = 1
+      more = True
+      while count &lt; 11 and more:
+         word = input(&quot;Enter word # {}: (q to exit)&quot;.format(count))
+         # make sure we have a maximum number.
+         if word.lower() == &quot;q&quot;:
+            more = False
+         else:
+            search_words.append(word)
+         count += 1
+
+   # I'm using Q as the default case. So if the user doesn't enter
+   # &quot;f&quot;, &quot;F&quot;, &quot;m&quot;, or &quot;M&quot;, then the program quits.
+   else:
+      return None
+
+   return search_words
+
+
+def text_scorer(text, search_words):
+   # iterate through search_words and get the frequency of each
+   # in the text. Also create a variable to store the count.
+   word_counter = 0
+   total_words = len(text.split(&quot; &quot;))
+
+   for word in search_words:
+      word_counter += text.count(word)
+
+   output = (word_counter, total_words)
+
+
+if __name__ == &quot;__main__&quot;:
+   words = ['apple', 'blueberry', 'mango']
+   search_words = get_search_words(words)
+   text = &quot;I like to eat apple, blueberry, and mango, but I don't like to eat them together. Apple is good. Blueberry is good, but blueberry and apple, not so good.&quot;
+
+   scores = text_scorer(text, search_words)
+   print(&quot;Search word frequency: {}&quot;.format(output[0]))
+   print(&quot;Total words: {}&quot;.format(output[1]))
+   print(&quot;Score: {}&quot;.format((output[0]/output[1] * 100), 2))
+</code></pre>
+
+<p>This is a fairly small program, but hopefully you can see the process we go through to break down the larger problem into a sequence of steps that can be solved by the computer. That is the essence of decomposition. </p>
+<h2 id="approaches-to-decomposition">Approaches to Decomposition</h2>
+<h3 id="procedural-decomposition">Procedural decomposition</h3>
+<p>Procedural decomposition looks at a complex tasks and sees it as a series of procedures or steps. One you're probably familiar with is cooking. Imagine you want to make a cake. If you read a cookbook like the Joy of Cooking, you'll see recipes that are a series of steps with the appropriate ingredients and actions listed with their corresponding step. So, to make, say, spaghetti carbonara,</p>
+<ul>
+<li>
+<p>you'd begin by starting some water boiling</p>
+</li>
+<li>
+<p>then dice some bacon and start cooking it</p>
+</li>
+<li>
+<p>then add pasta to the boiling water</p>
+</li>
+<li>
+<p>then skim off some of the oil from the bacon pan</p>
+</li>
+<li>
+<p>then when the pasta is done, reserve some cooking water and strain the pasta</p>
+</li>
+<li>
+<p>then mix the cooking water with eggs and cheese (carefully so as to not curdle the eggs).</p>
+</li>
+<li>
+<p>then, add pasta to the bacon pan</p>
+</li>
+<li>
+<p>finally, pour egg and cheese mixture over pasta</p>
+</li>
+<li>
+<p>serve with grated parmesan</p>
+</li>
+</ul>
+<p>Most early programming was procedural, and many of the onboard programs for things like watches, printers, and so on remain to some extent procedural. Procedural programming is useful for systems where one task is going to be performed over and over again. It is also useful because you don't need a ton of memory to store complex objects or functions. You just have a list of commands that the machine operates.</p>
+<p>Likewise, you might use procedural approaches in utility scripts that you write for your own purposes. Let's say you work in IT for a university department and you're tasked with helping faculty members clean up their file naming conventions. You could go through and manually rename all these files, but it would be much better to spend a bit of time writing a script and letting the computer do the work for you. That said, instead of writing a huge program with functions and objects, all you'd need is a short set of procedures that walks through the file tree and renames files ending with .docx or .pdf.</p>
+<p>Of course, procedural programming is less effective if you have a complex program that requires a lot of different kinds of activities. In this case, you might move over to functional programming.</p>
+<h3 id="functional-programming">Functional Programming</h3>
+<p>Last week I mentioned that programmers are lazy. In procedural programming, if I wanted to read through and open 100 files, read their content, and find the occurrences of the word "fish," I'd need to write</p>
+<pre><code class="python">with open(&quot;fileName&quot;) as f:
+   fish_counter += f.read().count(&quot;fish&quot;)
+</code></pre>
+
+<p>100 times in my program. I'm lazy and I don't want to do all that typing. Plus, I don't like copy-and-pasting. If one of the copied items is wrong, I'd have to go through and fix 100 occurrences. Instead, I'm going to create a function to generalize that task of opening and reading a file.</p>
+<pre><code class="python">def count_fishes(file_list):
+   fish_counter = 0
+
+   for f in file_list:
+      with open(f) as fhandle:
+         fish_counter += f.read().count(&quot;fish&quot;)
+
+   return fish_counter
+</code></pre>
+
+<p>Functional programming decomposes problems into a series of procedures, but then it takes those procedures and attempts to identify redundancies or general tasks. We take these redundant tasks and turn them into functions, or a set of commands that takes some input and returns some output after performing some process.</p>
+<p>The general function for a recipe looks something like this:</p>
+<p><img alt="Tree diagram of function" src="../img/recipe.png" /></p>
+<p>I see that in a recipe, I have a measure and add task that is repeated. I would probably want to create a function that can be used. In this case, I'd pass three parameters: 1. the ingredient to add, 2. how much to add, 3. when to add (this would interact with a global timer)</p>
+<h3 id="object-oriented">Object-Oriented</h3>
+<p>Object-oriented programming goes a step further towards generalization and encapsulation. I don't want to introduce OO programming to much yet, because we're spending two weeks on it starting next week, but in short, an Object is a way to group a set of attributes or features with a set of actions.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

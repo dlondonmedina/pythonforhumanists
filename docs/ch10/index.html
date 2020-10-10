@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Blackboxing and Algorithms - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch8/" class="dropdown-item">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="../ch9/" class="dropdown-item">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch9/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#black-boxing-and-algorithms" class="nav-link">Black Boxing and Algorithms</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#black-boxing" class="nav-link">Black Boxing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#algorithms" class="nav-link">Algorithms</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="black-boxing-and-algorithms">Black Boxing and Algorithms</h1>
+<h2 id="black-boxing">Black Boxing</h2>
+<p>The notion of black-boxed systems can largely be credited to <a href="https://en.wikipedia.org/wiki/Bruno_Latour">Bruno Latour</a>. Latour is a contemporary French philosopher who introduces a Theory and Method called Actor-Network-Theory (ANT). ANT, in general terms responds to a problem that we have when studying social systems, specifically, that the moment we observe a social system, the system changes. In other words, the claims that we can make about such social systems are based on a glimpse of the social system at one moment in time, and do not effectively describe the social system now. Further, since Latour was a relativist suggesting that the world is in a constant state of flux, our claims are ultimately flawed if we state "the world is like x."</p>
+<p>To counter this, he suggests that we look at agency, or the ability of actors to do things that affect the network in which they are embedded. For instance, we might not know who I am as your instructor, and we might not be able to know exactly the nature of our class, but we can see how I have authority to cause you to do, or not do, assignments and readings, etc. In short, ANT is interested in how different elements of a network can exert force on the network.</p>
+<p>"What does this have to do with computing?" you might ask. That's a good question. Latour was also very interested in scientific and technological networks. He was particularly concerned by the fact that these networks have a tendency towards positivism--or the belief that the world has knowable characteristics waiting for humans to discover. Since they expect truth from their work, they do not stop to question their approach to producing knowledge. As a result, scientific and technological systems have a tendency to become black-boxed--or the internal workings of them become hidden, and our concern becomes only inputs and outputs.</p>
+<p>I think machine learning is a very good example of this. In the most general sense, we feed a bunch of clean data to some sophisticated statistics algorithms (or functions), and it spits out models that define the phenomenon to, as many data scientists claim, a greater degree of accuracy than an expert on that phenomenon might be able to.</p>
+<p><img alt="XKCD comic" src="../img/machine_learning.png" /></p>
+<p>The same data scientists who are so excited about the machine learning algorithm and its effectiveness are also quick to claim that they don't know exactly what the algorithm is doing.</p>
+<p>In a more complicated explanation, the machine learning algorithm is a multi-variable algebraic function. The system then runs the data through the function gradually tweaking each variable's coefficient until the function sufficiently matches the data being fed in.</p>
+<p>Understanding the math doesn't matter so much, but what's important is how we are expected to feed a machine learning system like TensorFlow data, it does some process on the data, and it returns us a model that accurately describes the data. The "it does some process on the data" is a prime example of a black box in the scientific and technical sphere.</p>
+<p>While Latour was using the notion of the Black box to describe the social systems within the STEM fields, it also applies very well to technology itself. Think of your computer. Unless we've studied some computer science or programming, how many of us understand how our operating system takes the input from our keyboard and converts it into the appropriate actions and outputs? What about our cell phones? Most of the major carriers forbid us from opening the cases and seeing what's inside on pain of a violated warranty. The same is true, in many cases, if we want root access to our devices. </p>
+<p>I'm personally skeptical about the blackboxing that occurs in technology, but it does serve a purpose. First, it helps companies maintain their intellectual property rights on their technology. We don't have access to Windows source code because it belongs to Microsoft. Instead we get a compiled version that works, but we don't get to read the source code that makes it work. This is useful if we have some proprietary piece of software that we want to sell and don't want people to share--though it happens still.</p>
+<p>Second, blackboxing can help us with security. There is an argument in the Open Source community surrounding whether open source software can ever be secure. For instance, I can read through the entirety of the Ubuntu source, find potential bugs that can be exploited, and then write and deploy an exploit. It is more difficult for me to read through Windows because I don't have access to the source unless I steal it. On the other hand, open source advocates say that since anyone can read Ubuntu source, there's a greater community trying to find and report bugs so they can get patched. For Windows, I'm dependent upon Microsoft to find and patch bugs. Likewise, plenty of exploits have been found in Windows without the help of an open source. In terms of our smartphones, not having root access can be useful because it means we cannot as easily install apps that might be malicious because as non-root users we can only install apps through the Apple, Play, or Amazon store--depending on our device. So the companies are vetting the apps.</p>
+<p>Third, blackboxing makes things a lot simpler. Look at Apple's model. You buy a computer from them. It costs twice what a Windows machine would cost for the same specs, but you know that the computer is simply going to work. Granted, Apple might stop supporting the hardware in a few years, but for those few years, you'll have an easy to use computer that works.</p>
+<p>Finally, and this is where things are really relevant to us, blackboxing makes it a lot easier for us to work with technology when we're programming through API's. In Everyday Coding, you'll be building a RESTful API, but for now and API is short for application programming interface. This means, an API is an interface that expects particular inputs and given the appropriate inputs, will return predictable outputs. Twitter, and most social media sites, provide a public API for us to use. With the Twitter API, I can create a bot in python that, say, tweets twice an hour, every hour, about how great polar bears are. My bot will send an appropriate series of commands to the Twitter API, including authentication token and secret along with my particular command (post a new tweet about these bears). If all of that matches what the API expects, then my command is executed and the tweet will be posted.</p>
+<p>Likewise, many of the libraries in Python can be considered API's. When you install a library, it gives you a series of classes and functions that you can use. When you use these, you are interacting with the library's API. So, when I write:</p>
+<pre><code class="python">import requests
+r = requests.get('http://www.google.com')
+</code></pre>
+
+<p>I am using the requests library. Then I call the <code>get()</code> function within requests passing it a URL as an input. The <code>get()</code> function is part of the requests API and is a function that makes an HTTP GET call to the url and returns the response from the request.</p>
+<h4 id="why-does-this-matter-to-us">Why does this matter to us?</h4>
+<p>Whenever you're writing a function, just as someone wrote the <code>get()</code> function in the requests library, you're creating a blackbox. Inside that black box is a series of procedures that are performed on the input to the function. Ultimately that returns some output on the other side. When you design, use, and share your function, the most important thing to remember is that while the series of procedures might be complex, a user should be able to provide some appropriate input and receive an expected output from the function. Let me show you an example:</p>
+<pre><code class="python">def square_a_number(num):
+  &quot;&quot;&quot;This is an easy function. It expects some integer.
+  If the input is an integer, it will return that integer squared&quot;&quot;&quot;
+  if type(num) == int:
+    # The return statement is sends some output to the python interpreter.
+    return num * num
+  else:
+    raise ValueError(&quot;{} is not an integer.&quot;.format(num))
+
+
+# Test square_a_num()
+if __name__ == &quot;__main__&quot;:
+   nums = [2, 7, &quot;purple&quot;, 8]
+   for i in nums:
+   try:
+      num_squared = square_a_number(i)
+      print(&quot;{} squared is {}&quot;.format(i,num_squared))
+   except ValueError as e:
+      print(e)
+</code></pre>
+
+<p>In the above example, <code>square_a_number()</code> is a function that expects an integer. If it receives an integer, it returns (or has an output of) the input multiplied by itself. If it does not receive an integer, it raises an error saying the input is the wrong kind of value. Notice, I'm not converting the input to an integer, but testing that it is one. This is a good approach because many data types can be converted to an integer even if they're not. A, for instance, has an integer value.</p>
+<p>This week for your programming assignment, you'll be building a more complicated function that reads a file, finds matching words, and returns a count of the number of words that match. You'll be graded on both internal and external correctness. External correctness means it returns the expected value for an input regardless of how you get there inside the function. Internal correctness means that your solution makes sense inside the function.</p>
+<h2 id="algorithms">Algorithms</h2>
+<p>One of the crucial things we want to consider in programming is how can we be as efficient as possible and still effective.</p>
+<p>This can be seen in the "divide and conquer" strategy, where one big problem is broken into smaller sub-problems of the same type (divide), so they become simple enough to be solved directly (conquer). </p>
+<p>One example of an algorithm that uses divide-and-conquer decomposition is when you're searching a large amount of data. Say you're looking for the word "recursion" in a dictionary. You know the order of the alphabet, so rather than looking through every page starting at the beginning of the book, you'd start at the middle of the book and flip through the last half.</p>
+<p>When you find the R section, you'd look for a page with R-E words at the top. Then you'd look at the bottom of the page for R-E-C words. Then you'd scan that page to find your word.</p>
+<p>It turns out that every time you did this, you were using a divide and conquer algorithm. Here's another example – searching a library.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FOwCCvHEfY0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>We'll explore algorithms more next week, but this method of "decomposing" a search by breaking the area to be searched into increasingly small sections is a classic binary search algorithm, illustrated below, along with the much-less-efficient sequential search method:</p>
+<pre><code class="python"># Different types of search
+# This will show you two ways to find a value in a sorted list
+# The point here is that part of decomposition is not only finding
+# steps to solve a problem, but also finding efficient ways to
+# do so.
+my_list = [0, 1, 2, 15, 17, 19, 21, 147, 376, 2000]
+my_search_term = 21
+# Linear search
+# in linear search, I start with the first element of the list
+# loop through the list until I find the appropriate element
+# return the index of that element
+# In the worst case, we'll have to check every value in the list.
+# trivial for a list with this few elements, but if I had a million
+# entries, it would be a problem.
+count = 0
+found = False
+while count &lt; len(my_list) and not found:
+  if my_search_term == my_list[count]:
+    print(&quot;Found at index: {}&quot;.format(count))
+    found = True
+  count += 1
+if not found:
+  print(&quot;That value was not in the list.&quot;)
+
+# Binary Search
+# in binary search, I first need a sorted list. 
+# then I jump to the middle value and see if the search value
+# is bigger or smaller. I then move my search range accordingly.
+left = 0
+right = len(my_list)
+found = False
+while not found and right &gt; left:
+  middle = int(left + ((right - left) / 2))
+  if my_search_term == my_list[middle]:
+    print(&quot;Found at index: {}&quot;.format(middle))
+    found = True
+  elif my_search_term &gt; my_list[middle]:
+    left = middle
+  elif my_search_term &lt; my_list[middle]:
+    right = middle
+if not found:
+  print(&quot;The value was not found in the list.&quot;)
+</code></pre>
+
+<p><img alt="Animation of binary and sequential search" src="https://i.pinimg.com/originals/e2/9a/31/e29a31c78bcc0d07c612adc77acc09a0.gif" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

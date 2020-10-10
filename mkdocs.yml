@@ -14,4 +14,7 @@ nav:
     - Looping Flow Control: ch6.md
   - Data Types:
     - Primitive and Compound: ch7.md
-
+  - Functions:
+    - Introduction to Functions: ch8.md
+    - Decomposition: ch9.md
+    - Blackboxing and Algorithms: ch10.md   
