@@ -18,3 +18,7 @@ nav:
     - Introduction to Functions: ch8.md
     - Decomposition: ch9.md
     - Blackboxing and Algorithms: ch10.md   
+  - Putting things together:
+    - Functions and Scope: ch11.md
+    - Libraries and Style: ch12.md
+     

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Libraries and Style - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch8/" class="dropdown-item">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="../ch9/" class="dropdown-item">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="../ch10/" class="dropdown-item">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Putting things together <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch11/" class="dropdown-item">Functions and Scope</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Libraries and Style</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch11/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#imports" class="nav-link">Imports</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#using-pip" class="nav-link">Using Pip</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#downloading" class="nav-link">Downloading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-a-library-installed-through-pip" class="nav-link">Using a library installed through Pip</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-libraries-installed-manually" class="nav-link">Using libraries installed manually</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#import-from" class="nav-link">Import from</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#style" class="nav-link">Style</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#why-does-this-matter" class="nav-link">Why does this matter?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="imports">Imports</h1>
+<p>Importing is how we use other libraries and modules. A library or module is simply a collection of code that exists is not part of the particular program you are writing. There are two ways to install libraries:</p>
+<h2 id="using-pip">Using Pip</h2>
+<p>Pip is a package management tool that helps install libraries in python. Pip installs these repositories from the internet from their repository. A volunteer group reviews all libraries that are included in pip, and so usually they are pretty secure (about 90%) and reliable. If you use pip, and you install libraries that are well documented, you shouldn't have any problem. The user guide can be found here: <a href="https://pip.pypa.io/en/stable/user_guide/">Pip</a></p>
+<p>Pip allows you to install packages globally, meaning they are accessible to the python interpreter at a global level. You can also install packages within a local environment. So when you work in a virtual environment and have that environment activated, pip will install the module only to that environment (and you won't be able to access it in other environments). I recommend making use of virtual environments for your projects because it allows pip to manage dependencies more effectively and precisely for that code. It also makes your code more portable. When you install from Pip, please be careful to make sure you have the name of the library correct. There are some malicious libraries out there that have similar names trying to catch people who made typos. </p>
+<h2 id="downloading">Downloading</h2>
+<p>You can also install libraries by downloading them directly. In this case, you find the source code and download them to a directory that you know. Usually somewhere inside of your project directory so that they are easily accessible.</p>
+<p>If you're installing libraries manually without a package manager, it is totally on you to make sure that the code has been vetted. I'm a little lax when it comes to installing libraries through pip insofar as they are well vetted already, and they're usually libraries that get a lot of use and I've done research on. However, when I install libraries manually, I make sure that I have read and understand every line of code. You can choose what your level of paranoia is, but be aware that whenever you use someone else's library (as you will inevitably do), you're trusting them to have built something that is both safe and not malicious.</p>
+<h2 id="using-a-library-installed-through-pip">Using a library installed through Pip</h2>
+<p>When you install a library with pip, the setup process makes python aware of that library in the environment that you installed it. So if you installed requests in the global environment (without a virtual environment), then that library is visible and in scope for all of your projects. if you install a library with pip in a virtual environment, that library is available and in scope for the project in that virtual environment. If you get an error with a library that was installed through pip, specifically a name error, then it is highly likely that it was installed in a different scope. So, for each virtual environment, you need to pip install your libraries fresh. This is useful because it means that each virtual environment has a specific version of that library.</p>
+<p>Once installed, then you need to import the library. This is as simple as using the import command.</p>
+<pre><code class="python">import requests
+</code></pre>
+
+<p>This will import the requests library. From there, you can call any method that exists in that library. So <code>requests.get("https://www.google.com")</code> will use the get method from the imported requests library passing the string to the method. The method itself takes a URL as a string, makes a request to that address and returns the response it gets from the server.</p>
+<p>It is common practice to put all of your import statements at the top of your program file, but there may be some imports that only get made if certain conditions are satisfied. In that case, you can put the import statement anywhere. Just be aware that you can only use the imported library in lines in the file below where you import the library.</p>
+<h2 id="using-libraries-installed-manually">Using libraries installed manually</h2>
+<p>If you install a library manually, you still use import, but the name that is imported is trickier. You need to point the interpreter directly to the directory where that library was installed. If the library is a single file, then you can reference it by name as <code>import foo</code> In this case, the interpreter will look for foo in the same directory that your script is. It will import that code. If you have a multifile library (or a package) then you'll need to import from the directory various scripts.</p>
+<h2 id="import-from">Import from</h2>
+<p>In larger libraries, you'll likely only import elements that you're using. In this case, you'll see in tutorials and samples the line <code>from foo import bar</code> which means from the foo package import the program/class bar. Then to run functions in bar you write <code>bar.function_name()</code></p>
+<p>You might also run into cases where you want to import a few functions or a lot of functions. In this case, you can use wildcards to define the specificity. I recommend taking a look at the documentation on import which can be found <a href="https://docs.python.org/3/reference/simple_stmts.html#import">here</a>. </p>
+<h1 id="style">Style</h1>
+<p>Time for a little style:</p>
+<p>There are many style guidelines out there, and Python publishes a very solid one. I bring this up now because you're probably starting to encounter forums where people offer Python snippets and solutions. This is great, and I strongly encourage you to start looking at other people's code to get a sense of how they solved the problem. At the same time, on those forums you've probably also encountered people with strong opinions about how a problem should or should not be solved. Pythonistas are pretty friendly, so the forums generally remain civil, but there are a lot of opinions out there, especially when trying to write programs in as few of lines as possible. It's enough to get one really confused in a hurry. I would recommend avoiding those concerns for now. For now, there's only two things I want to mention about style. The first is the <a href="https://www.python.org/dev/peps/pep-0020/#the-zen-of-python">Zen of Python</a> which you should have taken a moment to read early in the quarter but here it is again:</p>
+<pre><code>Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+</code></pre>
+
+<p>Now that you've read about that, forget about style, and concern yourself with one most important rule: Understand exactly what you code does all the time (ok, maybe not if you're using a popular machine learning library with complex linear algebra...but still, you should have a sense of what's happening).</p>
+<h2 id="why-does-this-matter">Why does this matter?</h2>
+<p>It is totally possible to assemble a pretty complicated app in Python from snippets or little samples of code off StackOverflow without knowing what's happening in the code. This'll work, but is assumes a couple things:</p>
+<ol>
+<li>
+<p>The people offering the snippets on StackOverflow know what they're doing.</p>
+</li>
+<li>
+<p>The solutions are up to date and not using deprecated functions.</p>
+</li>
+<li>
+<p>The people offering the snippets are not offering you toxic code intentionally or unintentionally.</p>
+</li>
+<li>
+<p>There may be intellectual property issues at stake.</p>
+</li>
+</ol>
+<p>I doubt the first one is a serious problem, particularly if you pay attention to upvotes. However, I have seen some bad answers there...usually not the highest ranking one, but often up there. In any case, I suggest that borrowing snippets from other's code without knowing what it's doing is a serious liability. Let's take the os library. This library allows you to interact with the operating system, and with a smallish loop can be used to delete all the files on your disk or run shell commands.</p>
+<p>In short, our goal is to build cool things, but more important is to gain control over the cool things we build. If we borrow snippets, that's fine, but we really must understand what they're doing and why they're done that way.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

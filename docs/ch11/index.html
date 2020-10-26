@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Functions and Scope - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch8/" class="dropdown-item">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="../ch9/" class="dropdown-item">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="../ch10/" class="dropdown-item">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Putting things together <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Functions and Scope</a>
+</li>
+                                    
+<li>
+    <a href="../ch12/" class="dropdown-item">Libraries and Style</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch10/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../ch12/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#scopes-not-like-the-mouthwash" class="nav-link">Scopes: (Not like the mouthwash)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#combining-functions" class="nav-link">Combining Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="scopes-not-like-the-mouthwash">Scopes: (Not like the mouthwash)</h1>
+<p>So far, we have spent a great deal of time thinking about the file structure hierarchy and discussed the "context" in which our program might be running. I suggested that if a named entity does not exist in the local context, the program won't be able to find it unless you give the program a path to that entity (either from the context or from the root). This is really crucial to understand because computers are stupid, powerful machines. They are perfect if they understand the instructions, but worthless if the instructions are incorrectly written or lack explicitness. Beyond spelling things right, we also need to provide instructions in our code for the computer to find resources. Finding resources is a question of scope.</p>
+<p>Scope describes the context in which a program is operating and in which resources reside. If you recall, when I am in a terminal working in a particular directory, the scope includes only the folders and files that exist in that directory, and not the child folders and files of the folders in that directory or any above that directory. If I want to access folders outside of that directory, I need to give the computer directions, like a road map, either relatively from the directory I'm working in, or absolutely from the root.</p>
+<p>The same is true for programs. There are many levels of scope, and I think a good way to think of it is with a metaphor:</p>
+<p>Seattle city provides parks. Anybody can go into those parks, use the swingsets, play in the grass, etc. These parks are public and accessible to anyone at all.</p>
+<p>Within Seattle there are also houses and inside these houses there is stuff. Now while I can go into the park and use all the resources there, I couldn't go into some random person's house and use their stuff. They'd be angry. I'd probably get arrested. The person can use their own stuff, but I can't. If I want something from their house, I'd have to ask and have them give it to me.</p>
+<p>We might say that the park, being outside of the house, is a global environment. The house, on the other hand, is a local environment. Anyone who lives in any house can still access the park. Only people who live in their house can access the stuff in the house unless there is some way to take the stuff out of the house. What follows is an example in code and a video about scope. Please read the comments carefully and run the code to see what happens.</p>
+<p><em>main.py</em></p>
+<pre><code class="python"># Scope is complicated and so the whole writeup will be in code and repeated in a repl.it afterwards so you can run it.
+# Scope refers to where things are accessible and what context they
+# exist in. 
+# Python generally has two major levels of scope. Global and Local. 
+# Global scope refers to variables that are accessible everywhere. 
+my_global_var = 7 # this is a global variable.
+
+# The following will work because the variable is global and I'm 
+# in the global scope. 
+print(my_global_var) # prints 7
+
+my_global_var += 1 # I can also manipulate a global variable
+print(my_global_var) # prints 8
+
+print(&quot;\nNow trying a function: \n&quot;)
+# Local scope refers to named entities that are encapsulated inside
+# the block of another structure. 
+def first_function():
+  my_local_var = 8 # I'm a local variable. I can only be accessed
+                   # within first_function()
+  # Can access it here:
+  print(&quot;I've called first_function() and it can print the local variable: {}&quot;.format(my_local_var))
+  # I can also access global variables here
+  print(&quot;I am accessing the global: {}\n&quot;.format(my_global_var))
+
+# Now let's run the function:
+first_function()
+
+print(&quot;Now we can try to access the local variable:\n&quot;)
+# The following will fail and will print the error block.
+try:
+  print(my_local_var)
+except NameError:
+  print(&quot;FAIL: Cannot access local variable outside its scope.\n&quot;)
+
+# Global entities can be accessed globally, but it's generally best
+# practice to avoid global named entities unless you have a really 
+# good reason to use one. Local functions can be accessed locally 
+# and that's all. 
+# NOTE: There are ways to access variables from an enclosing scope
+# but not from an enclosed scope. 
+
+my_global_int = 42
+print(my_global_int) # Prints 42
+
+def level_one():
+  global my_global_int
+  print(my_global_int) # Prints 42
+  my_global_int += 1 # Changes the global &quot;my_global_int&quot;
+  print(my_global_int) # Prints 43
+
+level_one()
+print(my_global_int) # Also prints 43 because we increased it in level_one
+
+# You can also reference variables in an encasing function.
+
+def level_two():
+  count = 0
+  print(count) # Prints 0
+  def iterate():
+    nonlocal count # References the local variable &quot;count&quot; from level_two
+    count += 1 # Increases the value stored in count by one
+    print(count) # Prints 1
+  return iterate #This function returns a function
+
+# Notice, we cannot call iterate directly:
+try:
+  iterate()
+except NameError:
+  print(&quot;FAIL: iterate() exists in the level_two() scope and so we need to return it first.&quot;)
+
+l2 = level_two() # So if we assign the returned function to a variable, the level_two() function returns the iterate function, which then gets stored to the variable l2, which holds the function.
+l2() # That variable becomes a callable function. 
+</code></pre>
+
+<p>Here is the same think in an iframe so you can try and run it:
+<iframe src="https://repl.it/@medinadl/Scope?lite=true" width="100% sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" allowfullscreen="allowfullscreen"></iframe></p>
+<hr />
+<h1 id="combining-functions">Combining Functions</h1>
+<p>We've spent a good deal of time talking about functions now. Again, a function takes some input and returns some output. Ideally, when you're building functions you follow the rules abstraction and separating responsibility. Abstraction means that your function should be as general as you can get away with. Two weeks ago you had an assignment that asked you to take a list and file name or string as inputs and return a dictionary with words and counts. If you'd hardcoded that list or file name into the function itself, your function would not be abstract because it would only work on one list and file. However, since we turned the list and the file name into parameters, we can use the exact same functionality whether we're looking for jargon or dog whistles or any sort of words in any sort of text. This means instead of having a specific procedure to that looks for dog-whistles, we have an abstract procedure than can be used for that purpose or for other purposes.</p>
+<p>Abstraction is good design because it allows you to reuse code. We don't have to change the code if we look for a different list of words or a different file. We just have to pass different parameters as inputs to our function. Now it is possible to be too abstract. A good way to judge is ask yourself, "is there one specific type of input that would yield one specific type of output?" If you find yourself being able to take lots of types of input and returning lots of outputs, then your function is probably too general.</p>
+<p>Separating responsibility means that each function is responsible for one task. So, if I were building a larger text search app, I'd have a utility function designed specifically to open and read files and return the text. I'd have a set of other functions that could each do some unique analysis of the text. The point of this means that I don't need to write the code for opening a file in each function. I just write one function and use it to create inputs for the other functions. Likewise, if I wanted to build a User Interface for this application, I'd create another set of functions that take and process user input and print out the output of my functions in a nice, human readable, well styled fashion.</p>
+<p>By creating a set of loosely coupled, abstract, and single responsibility functions my code becomes significantly easier to maintain and modular. For instance, I can swap out my UI for some other service without having to change the language processing. I can also change the language processing without having to change the UI much. I could also add modules to read text from websites or a database instead of simply reading files. </p>
+<p>This is all good design.</p>
+<p>Here is an example of several functions being used in together in the same program.</p>
+<pre><code class="python">def file_opener(name):
+  try:
+    with open(name) as f:
+      text = f.read()
+    return text
+  except FileNotFoundError as e:
+    print(&quot;error: {}&quot;.format(e))
+
+  except IOError as e2:
+    print(&quot;error: {}&quot;.format(e))
+
+def get_list():
+  in = &quot;&quot;
+  out = []
+  while in.lower() is not &quot;q&quot;:
+    out.append(input(&quot;Give me a search word or q to exit.&quot;))
+  return out
+
+def word_search(arr, text):
+  count = 0
+  for word in arr:
+    count += text.search(word)
+
+  return count
+
+
+# Driver
+if __name__ == &quot;__main__&quot;:
+  fname = &quot;trump.txt&quot;
+  text = file_opener(fname)
+  words = get_list()
+
+  count = word_search(words, text)
+  print(&quot;There are {} occurrences.&quot;.format(count))
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
