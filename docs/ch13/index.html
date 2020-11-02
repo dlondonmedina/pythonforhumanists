@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Objects - Python for Humanists</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'G-MF6F1BZ6ES', 'auto');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Humanists</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Set-Up <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch1/" class="dropdown-item">Computers and You</a>
+</li>
+                                    
+<li>
+    <a href="../ch2/" class="dropdown-item">A Taste of Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Basic Syntax <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch3/" class="dropdown-item">Encoding Identity</a>
+</li>
+                                    
+<li>
+    <a href="../ch4/" class="dropdown-item">Anatomy of a Script</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Flow Control <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch5/" class="dropdown-item">Branching Flow Control</a>
+</li>
+                                    
+<li>
+    <a href="../ch6/" class="dropdown-item">Looping Flow Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch7/" class="dropdown-item">Primitive and Compound</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Functions <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch8/" class="dropdown-item">Introduction to Functions</a>
+</li>
+                                    
+<li>
+    <a href="../ch9/" class="dropdown-item">Decomposition</a>
+</li>
+                                    
+<li>
+    <a href="../ch10/" class="dropdown-item">Blackboxing and Algorithms</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Putting things together <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ch11/" class="dropdown-item">Functions and Scope</a>
+</li>
+                                    
+<li>
+    <a href="../ch12/" class="dropdown-item">Libraries and Style</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Objects</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ch12/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#objects" class="nav-link">Objects</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#the-constructor-and-instantiation" class="nav-link">The Constructor and Instantiation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dot-notation-visibility-self" class="nav-link">dot-notation &amp; visibility &amp; self</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="objects">Objects</h1>
+<p>Object Oriented Programming sounds like a new scary thing, and it does have some complications to it, but in general, it is more of what we've been doing all along with another layer over it. A few vocabulary words: </p>
+<ul>
+<li>
+<p><strong>property</strong> This is a variable that exists within the scope of the object.</p>
+</li>
+<li>
+<p><strong>method</strong> This is a function that exists within the scope of a method.</p>
+</li>
+</ul>
+<p>Okay, keep those terms in mind. <strong>An Object is a named entity that collects properties and methods in a meaningful and abstract way.</strong> Let's think about an example in the non-programming sense. Think of a car. It has properties (number of doors, color, number of seats, number of wheels, etc.). Each of these properties is general to all cars (all cars have doors, color, seats, wheels, etc.) but also a specific value for your car. Perhaps it is a two-door coupe. Maybe the color is red. Maybe the car has room for 5 and 4 wheels. My car might have different specific values for each of those properties, but it has those properties. In fact, there is a certain set of properties that a car must have for it to be a car. Likewise, the car has stuff that it does or actions that it performs. These actions are the methods. So, my car accelerates, it stops, it opens its doors, and it honks its horn. These actions are the <strong>methods</strong> of the car. Once again, each specific instance of a car might return different values for the methods, car horns all have different sounds based on the properties of the car, but they all can beep their horn. </p>
+<p>In Object Oriented Programming, we look at our programming tasks and we consider if there are collections of properties and methods that we could combine. Let's take our car example and turn it into Python:</p>
+<pre><code class="python">class Car:
+   '''
+   This docstring describes the object. Not required but useful.
+   '''
+   year
+   price
+   capacity
+   mpg
+
+   def get_year(self):
+      return self.year
+
+   def get_price(self):
+      return self.price
+
+   def set_price(self, price):
+      self.price = price 
+
+   def get_capacity(self):
+      return self.capacity
+
+</code></pre>
+
+<p>The first line is the syntax for defining a class. Then within the class block we have our list of class properties. These are accessible by any method within the class and directly from outside the class, but it's better to provide methods for getting their values. Finally, we have some methods that access the properties. So, once I have created a particular instance of a car, I can use the get_year method to get the particular year of this instance. More on that in a minute. Let's build out our object a little more:</p>
+<pre><code class="python">class Car:
+   '''
+   This docstring describes the object. Not required but useful.
+   '''
+   year: int
+   price: int
+   capacity: int
+   mpg: int
+   horn: str
+
+   def __init__(self, year, price, capacity, mpg, horn):
+      self.year = year
+      self.price = price
+      self.capacity = capacity
+      self.mpg = mpg
+
+      if horn == &quot;&quot;:
+         self.horn = &quot;beep&quot;
+      else:
+         self.horn = horn
+
+   def get_year(self):
+      return self.year
+
+   def get_price(self):
+      return self.price
+
+   def set_price(self, price):
+      self.price = price 
+
+   def get_capacity(self):
+      return self.capacity
+
+   def make_noise(self):
+      print(self.horn)
+</code></pre>
+
+<p>Notice that the class has the following properties: color, horn, price, capacity, and miles per gallon. Also called properties, they are all variables that will eventually hold values. Since they are variables, any instance of the class could have different values assigned to the attributes. How does this work? We begin by instantiating the class: </p>
+<h2 id="the-constructor-and-instantiation">The Constructor and Instantiation</h2>
+<p>The first thing to notice is that I added a special method called <strong>init</strong>. That method is the constructor. Each class, by default, has a method called a constructor. This is the function that is automatically called when we create a new instance of the class (see line 41 above). The constructor initializes that instance of the class in memory, or it creates a space to store a Rectangle of n-width and n-length, plus all of the methods. If you don't include a constructor, it simply creates space for that object in memory without any parameters. The constructor is a good place to create initial or default values for the properties. In other words, the constructor gives the object state by creating an instance of it in memory. If I created 100 new Rectangle objects, each one would have its own, unique state even though they're built on the Rectangle class template.</p>
+<p>You'll notice the constructor method in python is <strong>init</strong>(), which initializes the object. The key is the moment you create an instance of the class, this constructor is run.</p>
+<pre><code class="python">my_car = Car(2018, 35000, 6, 37, &quot;honk honk&quot;)
+</code></pre>
+
+<p>This will create an object that is based on the Car class. This means that the object will have all of the properties and methods defined by the car class. You'll notice that I pass a number of parameters to the Car class as I create (or "instantiate") the object. These parameters are given to the constructor. In Python the constructor method is called <strong>init</strong>(). A good way to remember init is by thinking it stands for initialize. Whenever you create a new instance of a class (or make an object based on the class), the <strong>init</strong>() method is called automatically on whatever you pass in as you create the instance. So using the example of my_car above, the init method does this (<strong>Note: you don't actually code this. It happens automatically. I'm giving you this to illustrate what's happening</strong>): </p>
+<p>The variable my_car now holds a Car() object that has its properties set to the above values by the constructor.</p>
+<p>The cool thing about classes: I can create loads of instances without much extra work: </p>
+<pre><code class="python">my_other_car = Car(2012, 20000, 3, 23, &quot;Beep&quot;)
+my_other_other_car = Car(1999, 2000, 3, 19, &quot;Chirp&quot;)S
+</code></pre>
+
+<p>Each of the new objects is constructed the moment the Python interpreter reads the line initializing it. At that moment, the <strong>init</strong>() method is called to initialize the instance of the object.</p>
+<h2 id="dot-notation-visibility-self">dot-notation &amp; visibility &amp; self</h2>
+<h3 id="dot-notation">dot-notation</h3>
+<p>You probably have already written Python code that uses <em>dot-notation</em>. For instance, when we want to make a string all lowercase, we simply call <code>str.lower()</code>, which is a method that returns the string with all of its characters lowercase. In this case, you're using dot-notation, which allows you to access a particular objects methods and properties. For instance, in the above example, if we wanted to access the mpg property directly, we'd simply write <code>my_car.mpg</code>. The first part tells us which object, and the part after the dot refers to a property. In the case of strings, every string is not only a series of characters, but it is an object (in Python). One of the methods that is part of every string is the lower() method, which takes the contents of the string and returns the contents in lowercase. To access that method, you simply use dot notation to call the method on the string object.</p>
+<p>Whenever you use object oriented programming, using something like dot-notation is vital. For instance, when you create an object and instantiate it, the way you make use of that object (it's methods and properties) is to call them through dot-notation. If you are not using object oriented programming, then dot-notation is less significant, but since in Python, everything is an object, and most things have methods and properties, and most things can be subtypable (more on that later), you use dot-notation a lot.</p>
+<h3 id="visibility">visibility</h3>
+<p>This is not inforced in Python. If you have experience with a programming language like Java or C++, you probably have encountered public, private, and protected variables and methods. This denotes their visibility. Let me give you an example: </p>
+<pre><code class="c++">class Car {
+   public:
+      Cars(string color, int capacity) {
+         this.color = color;
+         this.capacity = capacity;
+      }
+
+      int get_capacity() {
+         return this.capacity;
+      }
+
+      string get_color() {
+         return this.color;
+      }
+   private:
+      string color;
+      int capacity;
+};
+
+int main() {
+   Car my_car = new Car(&quot;blue&quot;, 4);
+   cout &lt;&lt; &quot;The color is: &quot; &lt;&lt; my_car.get_color() &lt;&lt; endl;
+   // This next line will not work because color is private.
+   cout &lt;&lt; &quot;The color is: &quot; &lt;&lt; my_car.color &lt;&lt; endl;
+}
+</code></pre>
+
+<p>I suspect this isn't too difficult to understand coming from Python. The various int's and string's are just defining the type of things. The thing to pay attention to is that there are private and public methods and properties. C++ (as well as Java) enforces the visibility of these. So, I cannot directly access the Car's color property because it is a private property. Instead, I have to use the public get_color() method. This is a security feature that is quite useful, and generally speaking it is good programming practice, especially if you are building something complex, to control how properties (data) is accessed. However, Python does not enforce private or public properties and methods. Everything is public. It has become conventional for Python developers to start the names of what they consider (or would like to consider) private with a single underscore _foo. Likewise, if you are building a system with complex inheritence (next page), you can precede a variable or function name with two underscores. This allows you to differentiate between the method in the parent class and child classes. This will make more sense when we talk about inheritance next.</p>
+<h3 id="self">self</h3>
+<p>The keyword self often leads to a good deal of confusion in Python. If you have experience with another programming language, like javascript or C++ or Java, you may have seen the keyword this. Python uses self instead. The keyword self refers to this particular instance of the class. For instance, let's look at a little class: </p>
+<pre><code class="python">class Shape:
+   sides: int
+   color: str
+
+   def __init__(self, color, sides): 
+      self.sides = sides
+      self.color = color
+
+   def get_color(self):
+      return self.color
+
+   def get_area(self):
+      return self.area
+</code></pre>
+
+<p>Notice that the class has two properties. One is the number of sides. The other is the color. Technically, these properties are in the scope of the class, but not necessarily in the scope of the methods. Also notice that each of the methods has self as a parameter. Basically, what's happening here is you are passing the instance of the object to each of these methods so that all of its methods and properties are accessible within each method. For instance, self.sides = sides means that we are assigning to the sides property of this instance of the object whatever value was passed in with the local sides parameter variable. self.sides is not the same variable as sides even though the latter's value is assigned to the former. Self is the way we donote this particular instance of the object.
+Conclusion</p>
+<p>This has been a really brief introduction to objects. In the future, we will begin discussing the four major principles of object oriented programming:</p>
+<ul>
+<li>
+<p>Abstraction</p>
+</li>
+<li>
+<p>Encapsulation</p>
+</li>
+<li>
+<p>Inheritance</p>
+</li>
+<li>
+<p>Polymorphism</p>
+</li>
+</ul>
+<p>These central concepts represent the major value and use of this programming paradigm. However, before we conclude, here are a few examples that you can run:</p>
+<iframe src="https://repl.it/@medinadl/Classes1?lite=true" width="100%" height="400px" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" allowfullscreen="allowfullscreen"></iframe>
+
+<iframe src="https://repl.it/@medinadl/Classes2?lite=true" width="100%" height="400px" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals" allowfullscreen="allowfullscreen"></iframe></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

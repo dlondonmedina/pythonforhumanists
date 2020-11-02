@@ -1,6 +1,9 @@
 site_name: Python for Humanists
 docs_dir: 'text'
 site_dir: 'docs'
+google_analytics: 
+  - G-MF6F1BZ6ES
+  - auto
 nav: 
   - Home: index.md
   - Set-Up:
@@ -21,4 +24,7 @@ nav:
   - Putting things together:
     - Functions and Scope: ch11.md
     - Libraries and Style: ch12.md
+    - Objects: ch13.md
+    
+
      
